@@ -1,0 +1,73 @@
+/* color logo oscuro #276852 */
+/* color logo claro #3ca48b */
+p {
+  color: #276852;
+}
+.hero {
+  background-image: url(../img/banner-web.jpg);
+}
+h1 {
+  color: #fff;
+}
+img {
+  max-width: 100%;
+}
+#header {
+  background: rgba(40, 158, 133, .6);
+  width: 100%!important;
+}
+.stats-col .circle {
+    border: 6px solid #276852;
+}
+.stats-col .circle .stats-no {
+    background-color: #3ca48b;
+}
+.form {
+  max-width: 750px;
+  margin: auto;
+}
+
+.nav-menu a.activo {
+  color: #276852
+}
+.mapa {
+  margin: 15px 0 25px;
+  max-width: 100%;
+}
+
+#portfolio {
+  padding: 20px;
+}
+
+#contacto {
+  padding: 20px;
+}
+
+#contacto h2 {
+  color: #199EB8;
+}
+
+.site-footer {
+  background-color: rgba(40, 158, 133, .6);
+}
+
+.site-footer .bottom {
+  background-color: rgba(40, 158, 133, .6);
+}
+
+@media (max-width: 767px) {
+  .info {
+    text-align: center;
+  }
+  .hero {
+    height: auto;
+  }
+  body.index {
+    padding-top: 70px;
+  }
+  #header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
