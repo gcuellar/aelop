@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head id="head">
+  <meta charset="utf-8">
+</head>
+
+<body class="index">
+  <!-- Page Content
+    ================================================== -->
+  <!-- Hero -->
+
+  <section class="hero">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-md-12">
+          <a class="hero-brand" href="index.html" title="Home"><img alt="Logo" src="img/LogoSample_TailorBrands.jpg"></a>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <h1>Mis proyectos web</h1>
+      </div>
+    </div>
+
+  </section>
+  <!-- /Hero -->
+
+  <!-- Header -->
+  <header id="header">
+    <div class="container">
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li><a class="activo" href="index.html">Inicio</a></li>
+          <li><a onclick="cargarContenido('portfolio.html')">Portfolio</a></li>
+          <li><a onclick="cargarContenido('budget.html')">Solicita presupuesto</a></li>
+          <li><a onclick="cargarContenido('contact.html')">Contacto</a></li>
+        </ul>
+      </nav>
+      <!-- #nav-menu-container -->
+      <nav class="nav social-nav pull-right d-none d-lg-inline">
+        <a href="https://www.linkedin.com/in/anaelenalm/"><i class="fa fa-linkedin"></i></a> <a href="mailto:aelopez@gmail.com?subject=Web"><i class="fa fa-envelope"></i></a>
+      </nav>
+    </div>
+  </header>
+  <!-- #header -->
+
+  <div class="cuerpo container">
+    <div class="row">
+      <!-- Contenido principal -->
+      <div class="col-sm-8 col-xs-12">
+        <div id="contenedor-principal" class="content">
+          <!-- About -->
+          <div class="contenido-inicial text-center">
+            <h2> Sobre mí </h2>
+            <p>Ingeniera técnica en informática de gestión y en proceso de graduarme en la especialidad de ingeniería del software.</p>
+            <h3>Conocimientos:</h3>
+            <div class="row stats-row">
+              <div class="stats-col text-center col-md-4 col-xs-12">
+                <div class="circle"><span class="stats-no">10</span> HTML - CSS </div>
+              </div>
+              <div class="stats-col text-center col-md-4 col-xs-12">
+                <div class="circle"><span class="stats-no">9</span> PHP </div>
+              </div>
+              <div class="stats-col text-center col-md-4 col-xs-12">
+                <div class="circle"><span class="stats-no">8</span> JavaScript - AJAX </div>
+              </div>
+            </div>
+          </div>
+          <!-- /About -->
+        </div>
+        <a href="#" onclick="cargar()">Cargar tiempo desde XML</a>
+      </div>
+      <!-- /Contenido principal -->
+
+      <!-- Sidebar -->
+      <div class="col-sm-4 col-xs-12">
+        <div id="noticias" class="sidebar">
+          <h2> Noticias </h2>
+        </div>
+      </div>
+      <!-- /Sidebar -->
+    </div>
+  </div>
+
+  <!-- @component: footer -->
+
+  <footer class="site-footer">
+
+  </footer>
+
+  <!-- Required JavaScript Libraries -->
+  <script src="libr/jquery/jquery.min.js"></script>
+  <!-- <script src="libr/jquery/jquery-migrate.min.js"></script> -->
+  <script src="libr/superfish/hoverIntent.js"></script>
+  <script src="libr/superfish/superfish.min.js"></script>
+  <script src="libr/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="libr/stickyjs/sticky.js"></script>
+
+  <!-- Template Specisifc Custom Javascript File -->
+  <script src="js/custom.js"></script>
+
+</body>
+<script>
+ $(document).ready(function () {
+   $('#head').load('./head.html');
+   $('footer').load('./footer.html');
+ });
+</script>
+</html>

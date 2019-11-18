@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head id="head">
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <!-- Page Content
+    ================================================== -->
+
+  <!-- Header -->
+  <header id="header">
+    <div class="container">
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="budget.html">Solicita presupuesto</a></li>
+          <li><a class="activo" href="contact.html">Contacto</a></li>
+        </ul>
+      </nav>
+      <!-- #nav-menu-container -->
+
+      <nav class="nav social-nav pull-right d-none d-lg-inline">
+        <a href="https://www.linkedin.com/in/anaelenalm/"><i class="fa fa-linkedin"></i></a> <a href="mailto:aelopez@gmail.com?subject=Contacto"><i class="fa fa-envelope"></i></a>
+      </nav>
+    </div>
+  </header>
+  <!-- #header -->
+
+  <section id="contacto">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2 class="section-title">Contacto</h2>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-3 col-md-4">
+          <div class="info">
+            <div>
+              <i class="fa fa-map-marker"></i>
+              <p>C/Martí;n Gaite<br>Córdoba, CP 14006</p>
+            </div>
+
+            <div>
+              <i class="fa fa-envelope"></i>
+              <p>aelopez@gmail.com</p>
+            </div>
+
+            <div>
+              <i class="fa fa-phone"></i>
+              <a href="tel:699784014" title="Llamanos sin compromiso">699784014</a>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-lg-5 col-md-8">
+          <div class="mapa">
+            <img src="img/mapa.jpg" title="Mapa" alt="Mapa">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- @component: footer -->
+
+  <footer class="site-footer">
+
+  </footer>
+
+  <!-- Required JavaScript Libraries -->
+  <script src="libr/jquery/jquery.min.js"></script>
+  <script src="libr/jquery/jquery-migrate.min.js"></script>
+  <script src="libr/superfish/hoverIntent.js"></script>
+  <script src="libr/superfish/superfish.min.js"></script>
+  <script src="libr/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="libr/stickyjs/sticky.js"></script>
+
+  <!-- Template Specisifc Custom Javascript File -->
+  <script src="js/custom.js"></script>
+
+</body>
+<script>
+ $(document).ready(function () {
+   $('#head').load('./head.html');
+   $('footer').load('./footer.html');
+ });
+</script>
+</html>

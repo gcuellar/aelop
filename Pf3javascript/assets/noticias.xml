@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<noticias>
+  <noticia>
+    <titular>10 errores que se suelen cometer al crear una web</titular>
+    <encabezado>Seguro que muchos no los conocías y te pueden ser muy útiles a la hora de crear tu página web a medida.</encabezado>
+    <fecha>29 oct 2019</fecha>
+    <url>https://www.latevaweb.com/errores-suelen-cometer-crear-web</url>
+    <imagen>img/noticia1.jpg</imagen>
+  </noticia>
+  <noticia>
+    <titular>Principales diferencias entre diseño y desarrollo web</titular>
+    <encabezado>Ambas disciplinas son necesarias en la creación de una página web, pero ¿Son el Diseño web y el Desarrollo web lo mismo?</encabezado>
+    <fecha>20 may 2019</fecha>
+    <url>https://www.latevaweb.com/diferencia-entre-diseno-web-y-desarrollo-web</url>
+    <imagen>img/noticia2.jpg</imagen>
+  </noticia>
+  <noticia>
+    <titular>Consejos para lograr un buen diseño de formularios web</titular>
+    <encabezado>Los formularios son una de las interacciones más importantes que tendrán los usuarios en tu web. ¡Descubre aquí las reglas a seguir para lograr los mejores diseños de formularios!</encabezado>
+    <fecha>13 may 2019</fecha>
+    <url>https://www.latevaweb.com/consejos-diseno-formulario-web</url>
+    <imagen>img/noticia3.jpg</imagen>
+  </noticia>
+  <noticia>
+    <titular>La relación entre el Diseño web y la Arquitectura web</titular>
+    <encabezado>La relación entre diseño web y arquitectura web puede aportar muchos beneficios al proceso de creación de un portal. Te contamos cómo en nuestro artículo.</encabezado>
+    <fecha>10 may 2019</fecha>
+    <url>https://www.latevaweb.com/diseno-web-arquitectura-web</url>
+    <imagen>img/noticia4.jpg</imagen>
+  </noticia>
+</noticias>

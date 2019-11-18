@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<section class="budget" id="budget">
+  <div class="container">
+    <h2 class="text-center">Solicita presupuesto</h2>
+    <div class="row">
+      <div class="col-sm-12 col-xs-12">
+        <div class="form">
+          <form class="presupuesto" action="mailto:aelopez@gmail.com?subject=Solicitud%20Presupuesto" method="post" enctype="text/plain" role="form" accept-charset="ISO-8859-1">
+            <div class="form-group">
+              <input type="text" name="Nombre" class="form-control" id="name" placeholder="Nombre*" data-rule="minlen:3" data-msg="Introduzca al menos 3 caracteres" />
+              <div class="validation"></div>
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" name="Email" id="email" placeholder="Email*" data-rule="email" data-msg="Introduzca un email válido" />
+              <div class="validation"></div>
+            </div>
+            <div class="form-group">
+              <input type="tel" class="form-control" name="Telefono" id="telefono" placeholder="Teléfono*" data-rule="tel" data-msg="Introduzca un número de teléfono válido" />
+              <div class="validation"></div>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="Solicitud" rows="5" data-rule="required" data-msg="Escriba su mensaje" placeholder="Información a solicitar*"></textarea>
+              <div class="validation"></div>
+            </div>
+            <div class="text-center">
+              <input type="submit" value="Enviar" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
