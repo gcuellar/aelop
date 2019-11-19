@@ -13,17 +13,17 @@ img {
   max-width: 100%;
 }
 #header {
-  background: rgba(40, 158, 133, .6);
+  background: rgba(40, 158, 133, .75);
   width: 100%!important;
 }
 .index .cuerpo{
   padding: 25px 0;
 }
 .stats-col .circle {
-    border: 6px solid #276852;
+  border: 6px solid #276852;
 }
 .stats-col .circle .stats-no {
-    background-color: #3ca48b;
+  background-color: #3ca48b;
 }
 .cuerpo.container h2{
   margin-bottom: 20px;
@@ -32,20 +32,41 @@ img {
   max-width: 750px;
   margin: auto;
 }
-
+.nav-menu li:hover a:not([href]) {
+  background-color: rgba(40, 158, 133, .3);
+}
+.nav-menu a:not([href]) {
+  color: #fff;
+  cursor: pointer;
+  padding: 24px 20px;
+}
+.nav-menu li:hover a:not([href]) {
+  color: #276852;
+}
+.nav-menu a {
+  font-weight: 700;
+}
 .nav-menu a.activo {
   color: #276852
+}
+.nav-menu a.activo:after {
+    content: '';
+    border-bottom: 2px solid #276852;
+    position: absolute;
+    width: calc(100% - 40px);
+    left: 20px;
+    bottom: 22px;
 }
 .mapa {
   margin: 15px 0 25px;
   max-width: 100%;
 }
 
-#portfolio {
+section#portfolio {
   padding: 20px;
 }
 
-#contacto {
+section#contacto {
   padding: 20px;
 }
 

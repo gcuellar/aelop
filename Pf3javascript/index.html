@@ -31,10 +31,10 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li><a class="activo" href="index.html">Inicio</a></li>
-          <li><a onclick="cargarContenido('portfolio.html')">Portfolio</a></li>
-          <li><a onclick="cargarContenido('budget.html')">Solicita presupuesto</a></li>
-          <li><a onclick="cargarContenido('contact.html')">Contacto</a></li>
+          <li><a id="inicio" class="activo" onclick="cargarContenido('index.html');activarItem('inicio');">Inicio</a></li>
+          <li><a id="portfolio" onclick="cargarContenido('portfolio.html');activarItem('portfolio');">Portfolio</a></li>
+          <li><a id="presupuesto" onclick="cargarContenido('budget.html');activarItem('presupuesto');">Solicita presupuesto</a></li>
+          <li><a id="contacto" onclick="cargarContenido('contact.html');activarItem('contacto');">Contacto</a></li>
         </ul>
       </nav>
       <!-- #nav-menu-container -->

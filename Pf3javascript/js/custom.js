@@ -138,7 +138,12 @@ function cargarContenido(seccion){
   objHttp.send(null);
 }
 
+function activarItem(id) {
+  $('.activo').removeClass('activo');
+  $('#'+id).addClass('activo');
+}
+
 // mensaje de bienvenida
 function bienvenida() {
-  alert("Bienvenid@s a mi web");
+  // alert("Bienvenid@s a mi web");
 }
