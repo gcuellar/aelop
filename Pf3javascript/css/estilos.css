@@ -65,6 +65,9 @@ img {
 section#portfolio {
   padding: 20px;
 }
+.portfolio-grid .row > div .card .portfolio-over .card-title {
+  font-size: 24px;
+}
 
 section#contacto {
   padding: 20px;
