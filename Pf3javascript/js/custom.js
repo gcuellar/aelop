@@ -83,6 +83,9 @@ $(document).ready(function() {
       $this.css('backgroundImage','url('+ bgImg + ')').addClass('block-bg-img');
   });
 
+//Carga el contendio inicial
+cargarContenido('about.html');
+
 //Carga las noticias
 cargarNoticias();
 

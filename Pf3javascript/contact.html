@@ -8,7 +8,7 @@
       </div>
 
       <div class="row justify-content-center">
-        <div class="col-lg-3 col-md-4">
+        <div class="col-lg-5 col-md-4">
           <div class="info">
             <div>
               <i class="fa fa-map-marker"></i>
@@ -28,12 +28,40 @@
           </div>
         </div>
 
-        <div class="col-lg-5 col-md-8">
+        <div class="col-lg-7 col-md-8">
           <div class="mapa">
             <img src="img/mapa.jpg" title="Mapa" alt="Mapa">
           </div>
         </div>
 
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2 class="section-title">Reúnete conmigo</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <form class="form-contacto" action="index.html" method="post">
+            <label for="exampleFormControlInput1">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+
+
+            <label for="Nombre">Nombre:</label>
+            <input id="Nombre" type="text" class="form-control" name="Nombre" placeholder="">
+            <label for="Apellidos">Apellidos:</label>
+            <input id="Apellidos" type="text" class="form-control" name="Apellidos" placeholder="">
+            <label for="Teléfono">Teléfono:</label>
+            <input id="Teléfono" type="tel" class="form-control" name="Teléfono" placeholder="">
+            <label for="Email">Email:</label>
+            <input id="Email" type="email" class="form-control" name="Email" placeholder="">
+            <label for="Fecha">Fecha:</label>
+            <input id="Fecha" type="datetime" class="form-control" name="Fecha" placeholder="" min="2013-01-01" max="2013-12-31" value="2013-01-01">
+            <label for="Motivo">Motivo:</label>
+            <textarea id="Motivo de la reunión" class="form-control" name="Motivo" rows="8" placeholder="" cols="80"></textarea>
+            <button type="button" name="button">Enviar</button>
+          </form>
+        </div>
       </div>
     </div>
   </section>

@@ -5,6 +5,12 @@ p {
 }
 .hero {
   background-image: url(../img/banner-web.jpg);
+  max-height: 150px;
+  padding: 40px 0;
+  margin-top: 0px;
+}
+a.hero-brand {
+  margin-bottom: 45px;
 }
 h1 {
   color: #fff;
@@ -50,36 +56,64 @@ img {
   color: #276852
 }
 .nav-menu a.activo:after {
-    content: '';
-    border-bottom: 2px solid #276852;
-    position: absolute;
-    width: calc(100% - 40px);
-    left: 20px;
-    bottom: 22px;
+  content: '';
+  border-bottom: 2px solid #276852;
+  position: absolute;
+  width: calc(100% - 40px);
+  left: 20px;
+  bottom: 22px;
 }
 .mapa {
   margin: 15px 0 25px;
   max-width: 100%;
 }
 
+/* Portfolio */
 section#portfolio {
   padding: 20px;
+  background-color: transparent;
+}
+.card.card-block {
+  border: 1px solid #3ca48b;
 }
 .portfolio-grid .row > div .card .portfolio-over .card-title {
   font-size: 24px;
 }
 
+/* Contacto */
 section#contacto {
   padding: 20px;
 }
-
 #contacto h2 {
   color: #199EB8;
+}
+.justify-content-center {
+  align-items: center;
+}
+.info>div {
+  display: flex;
+  justify-content: flex-start;
+}
+.info a {
+  color: #276852;
+}
+.info i.fa {
+  padding-right: 12px;
+  width: 28px;
+}
+form label {
+    text-align: left;
+    display: block;
+    margin-top: 1rem;
 }
 
 /* Noticias (sidebar) */
 .noticia {
-  padding-bottom: 20px;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+.noticia:not(:last-child) {
+  border-bottom: 1px dashed #3ca48b;
 }
 .foto-fecha {
   display: flex;
@@ -130,6 +164,8 @@ a.titular:hover {
     color: #ddd;
     cursor: inherit;
 }
+
+/* Responsive */
 
 @media (max-width: 767px) {
   .info {
