@@ -42,24 +42,25 @@
       </div>
       <div class="row">
         <div class="col-md-12 text-center">
-          <form class="form-contacto" action="index.html" method="post">
+          <!-- <form class="form-contacto" action="mailto:aelopez@gmail.com?subject=Contacto%20para%20reunión" method="post" enctype="text/plain" role="form" accept-charset="ISO-8859-1"> -->
+          <form class="form-contacto" action="" method="post" onsubmit="return varidarContacto(this);">
             <label for="exampleFormControlInput1">Email address</label>
             <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
 
 
             <label for="Nombre">Nombre:</label>
-            <input id="Nombre" type="text" class="form-control" name="Nombre" placeholder="">
+            <input required id="Nombre" type="text" class="form-control" name="Nombre" placeholder="">
             <label for="Apellidos">Apellidos:</label>
-            <input id="Apellidos" type="text" class="form-control" name="Apellidos" placeholder="">
+            <input required id="Apellidos" type="text" class="form-control" name="Apellidos" placeholder="">
             <label for="Teléfono">Teléfono:</label>
-            <input id="Teléfono" type="tel" class="form-control" name="Teléfono" placeholder="">
+            <input required id="Teléfono" type="tel" class="form-control" name="Tel&eacute;fono" pattern="[0-9]{9,9}" placeholder="" data-msg="Introduzca un número de teléfono válido">
             <label for="Email">Email:</label>
-            <input id="Email" type="email" class="form-control" name="Email" placeholder="">
+            <input required id="Email" type="email" class="form-control" name="Email" placeholder="">
             <label for="Fecha">Fecha:</label>
-            <input id="Fecha" type="datetime" class="form-control" name="Fecha" placeholder="" min="2013-01-01" max="2013-12-31" value="2013-01-01">
+            <input required id="Fecha" type="datetime-local" class="form-control" name="Fecha" placeholder="">
             <label for="Motivo">Motivo:</label>
-            <textarea id="Motivo de la reunión" class="form-control" name="Motivo" rows="8" placeholder="" cols="80"></textarea>
-            <button type="button" name="button">Enviar</button>
+            <textarea required id="Motivo de la reunión" class="form-control" name="Motivo" rows="8" placeholder="" cols="80"></textarea>
+            <input type="submit" value="Enviar">
           </form>
         </div>
       </div>
