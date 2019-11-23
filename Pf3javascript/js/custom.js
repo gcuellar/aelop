@@ -150,3 +150,58 @@ function activarItem(id) {
 function bienvenida() {
   // alert("Bienvenid@s a mi web");
 }
+
+// Función para validar el formulario de contacto
+function validarContacto(fc) {
+  var ok = true;
+  var mensaje = '';
+
+  var email = /^(.+\@.+\..+)$/;
+  if(!email.test(fc.Email.value)) {
+    ok = false;
+    mensaje += 'El email no tiene un formato válido\n';
+  }
+
+  var fecha = /^(.+\-.+\-.+)$/;
+  if(!fecha.test(fc.Fecha.value)) {
+    ok = false;
+    mensaje += 'La fecha no tiene un formato válido (dd-mm-aaaa)\n';
+  }
+  else if(!validarFecha(fc.Fecha.value)) {
+    ok = false;
+    mensaje += 'La fecha no es correcta\n';
+  }
+
+  if(fc.Motivo.value.length<3) {
+    ok = false;
+    mensaje += 'El motivo de la reunión es demasiado breve\n';
+  }
+
+  if(ok == false)
+    alert(mensaje);
+  return ok;
+
+}
+
+function validarFecha(fechaRecibida){
+  var Fecha = new String(fechaRecibida); // Crea un string
+  var RealFecha = new Date(); // Para sacar la fecha de hoy
+  var Ano = new String( Fecha.substring(Fecha.lastIndexOf("-") + 1, Fecha.length) );
+  var Mes = new String( Fecha.substring(Fecha.indexOf("-") + 1, Fecha.lastIndexOf("-")) );
+  var Dia = new String(Fecha.substring(0, Fecha.indexOf("-")));
+  if (isNaN(Ano) || Ano.length < 4 || parseFloat(Ano) < 1900) {
+    return false;
+  }
+  if (isNaN(Mes) || parseFloat(Mes) < 1 || parseFloat(Mes) > 12) {
+    return false;
+  }
+  if (isNaN(Dia) || parseInt(Dia) < 1 || parseInt(Dia) > 31) {
+    return false;
+  }
+  if (Mes == 4 || Mes == 6 || Mes == 9 || Mes == 11 || Mes == 2)  {
+    if ((Mes == 2 && Dia > 28) || Dia > 30) {
+      return false;
+    }
+  }
+  return true;
+}
