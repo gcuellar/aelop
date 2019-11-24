@@ -151,7 +151,7 @@ function activarItem(id) {
 
 // mensaje de bienvenida
 function bienvenida() {
-  // alert("Bienvenid@s a mi web");
+  alert("Bienvenid@s a mi web");
 }
 
 // Función para calcular el presupuesto
