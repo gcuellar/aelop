@@ -1,0 +1,10 @@
+autor (id, nombre)
+
+persona (id, nombre)
+
+disco (id, nombre, id autor, anyo)
+cancion (id, nombre, id disco, numero de orden)letra añadir luego
+
+persona-disco: produccion (id persona, id disco)
+
+persona-disco-cancion: colaboracion (id persona, id disco, id canción(puede ser nulo), rol)
