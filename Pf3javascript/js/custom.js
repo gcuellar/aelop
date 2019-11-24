@@ -190,6 +190,7 @@ function calcularPresupuesto(p) {
     }
   }
   p.Precio.value = + p.Precio.value + (cont * 400);
+  p.Precio.value += '€';
 }
 
 // Función para validar el formulario de presupuesto

@@ -76,6 +76,13 @@ img {
 }
 
 /* Presupuesto */
+input[type=submit] {
+  color: white;
+  background-color: #5eb6a4;
+  font-weight: 600;
+  margin: 1.5rem auto .5rem;
+  width: auto;
+}
 
 /* Dónde estamos */
 #mapa {
