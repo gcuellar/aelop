@@ -276,26 +276,13 @@ function pintarMapa() {
   //añadimos un marcador
   L.marker([37.885442, -4.784491], {draggable: false}).addTo(mimapa).bindPopup("<b>AELÓPEZ</b><br>web developer");
 
+  //control para calcular la ruta Hasta:
   var ruta = L.Routing.control({
-    waypoints: [ L.latLng(37.885967, -4.790385), L.latLng(37.885442, -4.784491) ],
-    routeWhileDragging: false
+    waypoints: [ null, L.latLng(37.885442, -4.784491)],
+    routeWhileDragging: false,
+    addWaypoints: true,
+    draggableWaypoints: false,
+    geocoder: L.Control.Geocoder.nominatim()
   });
   ruta.addTo(mimapa);
-
-  mimapa.on("click", function(e) {
-    var pixelPosition = e.layerPoint;
-    var latLng = mimapa.layerPointToLatLng(pixelPosition);
-    calcularRuta(latLng, mimapa, ruta);
-  });
-
-}
-
-// Calcular la ruta en el mapa
-function calcularRuta(desde, mimapa, ruta) {
-  //añadimos un control de ruta
-  var ruta = L.Routing.control({
-    waypoints: [ desde, L.latLng(37.885442, -4.784491) ],
-    routeWhileDragging: false
-  });
-  // ruta.addTo(mimapa);
 }
