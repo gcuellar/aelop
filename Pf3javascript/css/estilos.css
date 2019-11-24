@@ -15,6 +15,9 @@ a.hero-brand {
 h1 {
   color: #fff;
 }
+h2 {
+  color: #276852;
+}
 img {
   max-width: 100%;
 }
@@ -63,16 +66,8 @@ img {
   left: 20px;
   bottom: 22px;
 }
-.mapa {
-  margin: 15px 0 25px;
-  max-width: 100%;
-}
 
 /* Portfolio */
-section#portfolio {
-  padding: 20px;
-  background-color: transparent;
-}
 .card.card-block {
   border: 1px solid #3ca48b;
 }
@@ -80,13 +75,19 @@ section#portfolio {
   font-size: 24px;
 }
 
+/* Presupuesto */
+
+/* Dónde estamos */
+#mapa {
+  z-index: 1;
+  max-height: 500px;
+  min-height: 320px;
+}
+.leaflet-popup-content {
+  text-align: center;
+}
+
 /* Contacto */
-section#contacto {
-  padding: 20px;
-}
-#contacto h2 {
-  color: #199EB8;
-}
 .justify-content-center {
   align-items: center;
 }
@@ -100,6 +101,10 @@ section#contacto {
 .info i.fa {
   padding-right: 12px;
   width: 28px;
+}
+.foto-mapa {
+  margin: 15px 0 25px;
+  max-width: 100%;
 }
 form label {
     text-align: left;

@@ -136,6 +136,9 @@ function cargarContenido(seccion){
    objHttp.onreadystatechange = function() {
                                              if (objHttp.readyState==4) {
                                                document.getElementById('contenedor-principal').innerHTML = objHttp.responseText;
+                                               if (seccion=='donde.html') {
+                                                 pintarMapa();
+                                               }
                                              }
                                            }
   objHttp.send(null);
@@ -149,6 +152,60 @@ function activarItem(id) {
 // mensaje de bienvenida
 function bienvenida() {
   // alert("Bienvenid@s a mi web");
+}
+
+// Función para calcular el presupuesto
+function calcularPresupuesto(p) {
+  var cont = 0;
+  var checkboxes = p.Seccion;
+
+  p.Precio.value = p.Tipo.value;
+  switch (p.Tipo.value) {
+    case "Completa":
+      p.Precio.value = 2000;
+      break;
+    case "Premium":
+      p.Precio.value = 3000;
+      break;
+    default:
+      p.Precio.value = 1000;
+  }
+
+  if (p.Plazo.value >= 4) {
+    p.Precio.value -= p.Precio.value*0.2 ;
+  }
+  else if (p.Plazo.value >= 3) {
+    p.Precio.value -= p.Precio.value*0.15 ;
+  }
+  else if (p.Plazo.value >= 2) {
+    p.Precio.value -= p.Precio.value*0.1 ;
+  }
+  else {
+    p.Precio.value -= p.Precio.value*0.05 ;
+  }
+
+  for (var i=0; i < checkboxes.length; i++) {
+    if (checkboxes[i].checked) {
+      cont += 1;
+    }
+  }
+  p.Precio.value = + p.Precio.value + (cont * 400);
+}
+
+// Función para validar el formulario de presupuesto
+function validarPresupuesto(fp) {
+  var ok = true;
+  var mensaje = '';
+
+  var email = /^(.+\@.+\..+)$/;
+  if(!email.test(fp.Email.value)) {
+    ok = false;
+    mensaje += 'El email no tiene un formato válido\n';
+  }
+
+  if(ok == false)
+    alert(mensaje);
+  return ok;
 }
 
 // Función para validar el formulario de contacto
@@ -180,7 +237,6 @@ function validarContacto(fc) {
   if(ok == false)
     alert(mensaje);
   return ok;
-
 }
 
 function validarFecha(fechaRecibida){
@@ -204,4 +260,41 @@ function validarFecha(fechaRecibida){
     }
   }
   return true;
+}
+
+// Mapa de OpenstretMap
+function pintarMapa() {
+  var mimapa = L.map('mapa').setView([37.885442, -4.784491], 15);
+
+  //colocamos la capa del mapa
+  L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution:  'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+  }).addTo(mimapa);
+
+  //añadimos un marcador
+  L.marker([37.885442, -4.784491], {draggable: false}).addTo(mimapa).bindPopup("<b>AELÓPEZ</b><br>web developer");
+
+  var ruta = L.Routing.control({
+    waypoints: [ L.latLng(37.885967, -4.790385), L.latLng(37.885442, -4.784491) ],
+    routeWhileDragging: false
+  });
+  ruta.addTo(mimapa);
+
+  mimapa.on("click", function(e) {
+    var pixelPosition = e.layerPoint;
+    var latLng = mimapa.layerPointToLatLng(pixelPosition);
+    calcularRuta(latLng, mimapa, ruta);
+  });
+
+}
+
+// Calcular la ruta en el mapa
+function calcularRuta(desde, mimapa, ruta) {
+  //añadimos un control de ruta
+  var ruta = L.Routing.control({
+    waypoints: [ desde, L.latLng(37.885442, -4.784491) ],
+    routeWhileDragging: false
+  });
+  // ruta.addTo(mimapa);
 }
