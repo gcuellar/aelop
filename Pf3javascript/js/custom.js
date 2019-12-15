@@ -276,12 +276,12 @@ function pintarMapa() {
   //añadimos un marcador
   L.marker([37.885442, -4.784491], {draggable: false}).addTo(mimapa).bindPopup("<b>AELÓPEZ</b><br>web developer");
 
-  //control para calcular la ruta Hasta:
+  //control para calcular la ruta Hasta el destino
   var ruta = L.Routing.control({
     waypoints: [ null, L.latLng(37.885442, -4.784491)],
     routeWhileDragging: false,
     addWaypoints: true,
-    draggableWaypoints: false,
+    draggableWaypoints: true,
     geocoder: L.Control.Geocoder.nominatim()
   });
   ruta.addTo(mimapa);

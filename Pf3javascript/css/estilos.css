@@ -93,6 +93,19 @@ input[type=submit] {
 .leaflet-popup-content {
   text-align: center;
 }
+.leaflet-routing-geocoder:nth-child(2) { /* Ocultar el campo hasta (el destino) */
+    display: none;
+}
+/* Para que el marcador quede por encima de los de la ruta */
+.leaflet-pane.leaflet-marker-pane img:nth-child(1) {
+    z-index: 1000!important;
+}
+.leaflet-pane.leaflet-marker-pane img:nth-child(3) {
+    z-index: 0!important;
+}
+button.leaflet-routing-add-waypoint { /* Ocultar el botón para no añadir más puntos a la ruta */
+    display: none;
+}
 
 /* Contacto */
 .justify-content-center {
@@ -180,6 +193,9 @@ a.titular:hover {
 /* Responsive */
 
 @media (max-width: 767px) {
+  .row{
+    margin: auto;
+  }
   .info {
     text-align: center;
   }
