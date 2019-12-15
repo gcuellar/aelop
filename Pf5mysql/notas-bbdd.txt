@@ -8,3 +8,11 @@ cancion (id, nombre, id disco, numero de orden)letra añadir luego
 persona-disco: produccion (id persona, id disco)
 
 persona-disco-cancion: colaboracion (id persona, id disco, id canción(puede ser nulo), rol)
+
+
+(Al borrar el bonustrack se borrarán tb las colaboraciones asociadas a ella)
+id_colaboracion	Nombre	Aportación a la canción
+136	Andy Pyle	Bass
+59	Gary Moore	Written
+135	Gary Moore	Guitar/Vocals
+137	Graham Walker	Drums

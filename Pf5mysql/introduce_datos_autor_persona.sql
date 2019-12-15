@@ -77,3 +77,5 @@ INSERT INTO persona (nombre) VALUES ('Wayne Jackson');
 INSERT INTO persona (nombre) VALUES ('Carol Kenyon');
 INSERT INTO persona (nombre) VALUES ('Linda Taylor');
 INSERT INTO persona (nombre) VALUES ('Richard Morgan');
+INSERT INTO persona (nombre) VALUES ('Don Airey');
+INSERT INTO persona (nombre) VALUES ('Albert King');
