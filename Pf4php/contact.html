@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+  <section id="contacto">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2 class="section-title">Contacto</h2>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-4">
+          <div class="info">
+            <div>
+              <i class="fa fa-map-marker"></i>
+              <p>C/Martín Gaite<br>Córdoba, CP 14006</p>
+            </div>
+
+            <div>
+              <i class="fa fa-envelope"></i>
+              <p>aelopez@gmail.com</p>
+            </div>
+
+            <div>
+              <i class="fa fa-phone"></i>
+              <a href="tel:699784014" title="Llamanos sin compromiso">699784014</a>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-lg-7 col-md-8">
+          <div class="foto-mapa">
+            <img src="img/mapa.jpg" title="Mapa" alt="Mapa">
+          </div>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2 class="section-title">Reúnete conmigo</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <!-- <form class="form-contacto" action="mailto:aelopez@gmail.com?subject=Contacto%20para%20reunión" method="post" enctype="text/plain" role="form" accept-charset="ISO-8859-1"> -->
+          <form class="form-contacto" action="mailto:aelopez@gmail.com?subject=Contacto%20para%20reunión" method="post" onsubmit="return validarContacto(this);" target="_self" accept-charset="UTF-8, ISO-8859-1" enctype="text/plain">
+            <label for="nombre">Nombre:</label>
+            <input required id="nombre" type="text" class="form-control" name="Nombre">
+            <label for="apellidos">Apellidos:</label>
+            <input required id="apellidos" type="text" class="form-control" name="Apellidos">
+            <label for="telefono">Teléfono:</label>
+            <input required id="teléfono" type="tel" class="form-control" name="Telefono" pattern="[0-9]{9,9}" data-msg="Introduzca un número de teléfono válido">
+            <label for="email">Email:</label>
+            <input required id="email" type="email" class="form-control" name="Email">
+            <label for="fecha">Fecha:</label>
+            <input required id="fecha" type="text" class="form-control" name="Fecha" placeholder="dd-mm-aaaa">
+            <label for="motivo">Motivo:</label>
+            <textarea required id="motivo" class="form-control" name="Motivo" rows="4" cols="80"></textarea>
+            <input type="submit" value="Enviar" class="form-control">
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>

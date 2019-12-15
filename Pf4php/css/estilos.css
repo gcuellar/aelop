@@ -1,0 +1,213 @@
+/* color logo oscuro #276852 */
+/* color logo claro #3ca48b */
+p {
+  color: #276852;
+}
+.hero {
+  background-image: url(../img/banner-web.jpg);
+  max-height: 150px;
+  padding: 40px 0;
+  margin-top: 0px;
+}
+a.hero-brand {
+  margin-bottom: 45px;
+}
+h1 {
+  color: #fff;
+}
+h2 {
+  color: #276852;
+}
+img {
+  max-width: 100%;
+}
+#header {
+  background: rgba(40, 158, 133, .75);
+  width: 100%!important;
+}
+.index .cuerpo{
+  padding: 25px 0;
+}
+.stats-col .circle {
+  border: 6px solid #276852;
+}
+.stats-col .circle .stats-no {
+  background-color: #3ca48b;
+}
+.cuerpo.container h2{
+  margin-bottom: 20px;
+}
+.form {
+  max-width: 750px;
+  margin: auto;
+}
+.nav-menu li:hover a:not([href]) {
+  background-color: rgba(40, 158, 133, .3);
+}
+.nav-menu a:not([href]) {
+  color: #fff;
+  cursor: pointer;
+  padding: 24px 20px;
+}
+.nav-menu li:hover a:not([href]) {
+  color: #276852;
+}
+.nav-menu a {
+  font-weight: 700;
+}
+.nav-menu a.activo {
+  color: #276852
+}
+.nav-menu a.activo:after {
+  content: '';
+  border-bottom: 2px solid #276852;
+  position: absolute;
+  width: calc(100% - 40px);
+  left: 20px;
+  bottom: 22px;
+}
+
+/* Portfolio */
+.card.card-block {
+  border: 1px solid #3ca48b;
+}
+.portfolio-grid .row > div .card .portfolio-over .card-title {
+  font-size: 24px;
+}
+
+/* Presupuesto */
+input[type=submit] {
+  color: white;
+  background-color: #5eb6a4;
+  font-weight: 600;
+  margin: 1.5rem auto .5rem;
+  width: auto;
+}
+
+/* Dónde estamos */
+#mapa {
+  z-index: 1;
+  max-height: 500px;
+  min-height: 320px;
+}
+.leaflet-popup-content {
+  text-align: center;
+}
+.leaflet-routing-geocoder:nth-child(2) { /* Ocultar el campo hasta (el destino) */
+    display: none;
+}
+/* Para que el marcador quede por encima de los de la ruta */
+.leaflet-pane.leaflet-marker-pane img:nth-child(1) {
+    z-index: 1000!important;
+}
+.leaflet-pane.leaflet-marker-pane img:nth-child(3) {
+    z-index: 0!important;
+}
+button.leaflet-routing-add-waypoint { /* Ocultar el botón para no añadir más puntos a la ruta */
+    display: none;
+}
+
+/* Contacto */
+.justify-content-center {
+  align-items: center;
+}
+.info>div {
+  display: flex;
+  justify-content: flex-start;
+}
+.info a {
+  color: #276852;
+}
+.info i.fa {
+  padding-right: 12px;
+  width: 28px;
+}
+.foto-mapa {
+  margin: 15px 0 25px;
+  max-width: 100%;
+}
+form label {
+    text-align: left;
+    display: block;
+    margin-top: 1rem;
+}
+
+/* Noticias (sidebar) */
+.noticia {
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+.noticia:not(:last-child) {
+  border-bottom: 1px dashed #3ca48b;
+}
+.foto-fecha {
+  display: flex;
+}
+.foto {
+  flex-basis: calc(100% - 70px);
+  height: 70px;
+}
+.foto img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.fecha {
+  color: #fff;
+  width: 70px;
+  flex-basis: 70px;
+  height: 70px;
+  font-size: .9rem;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-weight: 700;
+  background-color: #3ca48b;
+  margin-left: auto;
+}
+a.titular {
+  color: #276852;
+}
+a.titular:hover {
+  color: #3ca48b;
+}
+.encabezado {
+    font-size: .85rem;
+    line-height: 1.2;
+}
+
+/* Footer */
+.site-footer {
+  background-color: rgba(40, 158, 133, .6);
+}
+
+.site-footer .bottom {
+  background-color: rgba(40, 158, 133, .6);
+}
+.site-footer .credits a {
+    color: #ddd;
+    cursor: inherit;
+}
+
+/* Responsive */
+
+@media (max-width: 767px) {
+  .row{
+    margin: auto;
+  }
+  .info {
+    text-align: center;
+  }
+  .hero {
+    height: auto;
+  }
+  body.index {
+    padding-top: 70px;
+  }
+  #header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}

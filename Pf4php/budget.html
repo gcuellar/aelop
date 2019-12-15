@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<section class="budget" id="presupuesto">
+  <div class="container">
+    <h2 class="text-center">Solicita presupuesto</h2>
+    <div class="row">
+      <div class="col-sm-12 col-xs-12">
+        <div class="form">
+          <form class="presupuesto" id="form-presupuesto" action="mailto:aelopez@gmail.com?subject=Solicitud%20de%20presupuesto" method="post" onsubmit="return validarPresupuesto(this);" target="_self" accept-charset="UTF-8, ISO-8859-1" enctype="text/plain">
+            <h3 class="text-center">Datos</h3>
+            <label for="nombre">Nombre:</label>
+            <input required id="nombre" type="text" class="form-control" name="Nombre" placeholder="">
+            <label for="apellidos">Apellidos:</label>
+            <input required id="apellidos" type="text" class="form-control" name="Apellidos" placeholder="">
+            <label for="telefono">Teléfono de contacto:</label>
+            <input required id="telefono" type="tel" class="form-control" name="Telefono de contacto" pattern="[0-9]{9,9}" placeholder="" data-msg="Introduzca un número de teléfono válido">
+            <label for="email">Email:</label>
+            <input required id="email" type="email" class="form-control" name="Email" placeholder="">
+            <br><h3 class="text-center">Web</h3>
+            <div class="form-group">
+              <label for="tipoWeb">Tipo de página web</label>
+              <select class="form-control" name="Tipo" id="tipoWeb" onchange="calcularPresupuesto(form);">
+                <option value="Básica">Básica</option>
+                <option value="Completa">Completa</option>
+                <option value="Premium">Premium</option>
+              </select>
+            </div>
+            <label for="plazo">Plazo (en meses):</label>
+            <input required id="plazo" type="number" class="form-control" value="1" min="1" name="Plazo" onchange="calcularPresupuesto(form);">
+            <label for="motivo">Marque las opciones deseadas:</label>
+            <div class="form-group form-check">
+              <div class="row">
+                <label class="col form-check-label" for="quienes-somos">
+                    <input type="checkbox" class="form-check-input" name="Seccion" value="Quienes somos" id="quienes-somos" onchange="calcularPresupuesto(form);">
+                    Quienes somos</label>
+                  <label class="col form-check-label" for="donde-estamos">
+                    <input type="checkbox" class="form-check-input" name="Seccion" value="Donde estamos" id="donde-estamos" onchange="calcularPresupuesto(form);">
+                    Donde estamos</label>
+                  <label class="col form-check-label" for="galeria-fotos">
+                    <input type="checkbox" class="form-check-input" name="Seccion" value="Galería de fotos" id="galeria-fotos" onchange="calcularPresupuesto(form);">
+                    Galería de fotos</label>
+                  <label class="col form-check-label" for="ecomerce">
+                    <input type="checkbox" class="form-check-input" name="Seccion" value="eComerce" id="ecomerce" onchange="calcularPresupuesto(form);">
+                    eComerce</label>
+              </div>
+              <div class="row">
+                <label class="col form-check-label" for="gestion interna">
+                  <input type="checkbox" class="form-check-input" name="Seccion" value="Gestión interna" id="gestion" onchange="calcularPresupuesto(form);">
+                  Gestión interna
+                </label>
+                <label class="col form-check-label" for="noticias">
+                  <input type="checkbox" class="form-check-input" name="Seccion" value="Noticias" id="noticias" onchange="calcularPresupuesto(form);">
+                  Noticias
+                </label>
+                <label class="col form-check-label" for="faceboook">
+                  <input type="checkbox" class="form-check-input" name="Seccion" value="Faceboook" id="faceboook" onchange="calcularPresupuesto(form);">
+                  Faceboook
+                </label>
+                <label class="col form-check-label" for="twitter">
+                  <input type="checkbox" class="form-check-input" name="Seccion" value="Twitter" id="twitter" onchange="calcularPresupuesto(form);">
+                  Twitter
+                </label>
+              </div>
+            </div>
+            <label for="precio">Presupuesto estimado: </label>
+            <span>(Recuerde que es una estimación y como tal podrá variar según la web)</span>
+            <input id="precio" type="text" class="form-control" name="Precio" value="950€" readonly>
+            <input type="submit" value="Enviar" class="form-control">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
