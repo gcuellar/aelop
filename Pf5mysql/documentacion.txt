@@ -1,0 +1,17 @@
+Las notas del diseño de la bbdd están en el fichero notas-bbdd.txt
+
+La creación de la bbdd en el fichero crea_tablas.sql
+
+La introducción de datos en la bbdd está secuencialmente en los siguentes ficheros:
+- introduce_datos_autor_persona.sql
+- introduce_datos_disco_cancion.sql
+- introduce_datos_produccion_colaboracion.sql
+
+El resto de ejercicios se detallan en los ficheros:
+- consultas_select.sql
+- modificaciones_y_eliminaciones.sql
+- crea_vista.sql
+
+Copias de la bbdd
+- copiaseguridadbdd.sql (copia completa que incluye la creación de la bbdd 'musica')
+- musica.sql (copia de la bbdd música, solo tablas y datos)
