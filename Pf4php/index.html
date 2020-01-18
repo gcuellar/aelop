@@ -31,7 +31,8 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li><a id="inicio" class="activo" onclick="cargarContenido('about.html');activarItem('inicio');">Inicio</a></li>
+          <li><a id="inicio" class="activo" onclick="cargarContenido('noticias.html', cargarNoticias); activarItem('inicio');">Inicio</a></li>
+          <li><a id="about" onclick="cargarContenido('about.html');activarItem('about');">Sobre mi</a></li>
           <li><a id="portfolio" onclick="cargarContenido('portfolio.html');activarItem('portfolio');">Portfolio</a></li>
           <li><a id="presupuesto" onclick="cargarContenido('budget.html');activarItem('presupuesto');">Solicita presupuesto</a></li>
           <li><a id="donde" onclick="cargarContenido('donde.html');activarItem('donde');">Dónde estamos</a></li>
@@ -57,8 +58,8 @@
 
       <!-- Sidebar -->
       <div class="col-sm-4 col-xs-12">
-        <div id="noticias" class="sidebar">
-          <h2> Noticias </h2>
+        <div id="login" class="sidebar">
+          <h2> Usuarios </h2>
         </div>
       </div>
       <!-- /Sidebar -->
@@ -82,7 +83,7 @@
   <!-- Recursos para mapas de codgo abierto -->
   <script src="libr/leaflet/leaflet.js"></script>
   <script src="libr/leaflet/routing/leaflet-routing-machine.js"></script>
-  <script src="libr/leaflet/routing/Control.Geocoder.js"></script> 
+  <script src="libr/leaflet/routing/Control.Geocoder.js"></script>
 
   <!-- Template Specisifc Custom Javascript File -->
   <script src="js/custom.js"></script>

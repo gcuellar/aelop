@@ -84,13 +84,7 @@ $(document).ready(function() {
   });
 
 //Carga el contendio inicial
-cargarContenido('about.html');
-
-//Carga las noticias
-cargarNoticias();
-
-//llamada a bienvenida con retardo
-setTimeout('bienvenida()',5000);
+cargarContenido('noticias.html', cargarNoticias);
 
 });
 
@@ -128,7 +122,7 @@ function cargarNoticias() {
 }
 
 /* Funcion de carga asíncrona del contenido principal de la página */
-function cargarContenido(seccion){
+function cargarContenido(seccion, nombrefuncion){
   var objHttp=null;
   if(window.XMLHttpRequest) { objHttp = new XMLHttpRequest(); }
   else if(window.ActiveXObject) { objHttp = new ActiveXObject("Microsoft.XMLHTTP"); }
@@ -139,6 +133,9 @@ function cargarContenido(seccion){
                                                if (seccion=='donde.html') {
                                                  pintarMapa();
                                                }
+                                               if (nombrefuncion) {
+                                                 nombrefuncion();
+                                               }
                                              }
                                            }
   objHttp.send(null);
@@ -148,11 +145,6 @@ function activarItem(id) {
   $('.activo').removeClass('activo');
   $('#'+id).addClass('activo');
 }
-
-// mensaje de bienvenida
-// function bienvenida() {
-//   alert("Bienvenid@s a mi web");
-// }
 
 // Función para calcular el presupuesto
 function calcularPresupuesto(p) {
