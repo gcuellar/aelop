@@ -84,42 +84,9 @@ $(document).ready(function() {
   });
 
 //Carga el contendio inicial
-cargarContenido('noticias.html', cargarNoticias);
+cargarContenido('noticias.php');
 
 });
-
-/* Funcion de carga asincrona desde fichero externo XML */
-function cargarNoticias() {
-  //leemos el archivo.
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      mostrar(this);
-    }
-  };
-  xhttp.open("GET", "assets/noticias.xml", true);
-  xhttp.send();
-  //cargamos usando variables.
-  function mostrar(xml) {
-    var i, cadena;
-    var objHttp = xml.responseXML;
-    cadena = "";
-    titular = objHttp.getElementsByTagName('titular');
-    encabezado = objHttp.getElementsByTagName('encabezado');
-    fecha = objHttp.getElementsByTagName('fecha');
-    imagen = objHttp.getElementsByTagName('imagen');
-    url = objHttp.getElementsByTagName('url');
-    for (i = 0 ; i <titular.length; i++) {
-      cadena += "<div class='noticia'><div class='foto-fecha'><div class='foto'>";
-      cadena += "<img src='" + imagen[i].childNodes[0].nodeValue + "' alt='" + titular[i].childNodes[0].nodeValue + "'></div>";
-      cadena += "<div class='fecha'>" + fecha[i].childNodes[0].nodeValue + "</div></div>";
-      cadena += "<a class='titular' href='" + url[i].childNodes[0].nodeValue + "' target='_blank'>";
-      cadena += "<h4>" + titular[i].childNodes[0].nodeValue + "</h4></a>";
-      cadena += "<div class='encabezado'>" + encabezado[i].childNodes[0].nodeValue + "</div></div>";
-    }
-    document.getElementById("noticias").innerHTML += cadena;
-  }
-}
 
 /* Funcion de carga asíncrona del contenido principal de la página */
 function cargarContenido(seccion, nombrefuncion){
