@@ -15,7 +15,7 @@
       				while($row=mysqli_fetch_array($result)) {
                 if ($row['idnoticia']==$idsingle) {
                   $cadena .= "<div class='noticia'><div class='foto-fecha'><div class='foto'>";
-                  $cadena .= "<img src='".$row['imagen']."' alt='".$row['titular']."'></div>";
+                  $cadena .= "<img src='img/".$row['imagen']."' alt='".$row['titular']."'></div>";
                   $cadena .= "<div class='fecha'>".$row['fecha']."</div></div>";
                   $cadena .= "<div class='titular'><h2>".$row['titular']."</h2></div>";
                   $cadena .= "<div class='texto'>".$row['cuerpo']."</div></div>";

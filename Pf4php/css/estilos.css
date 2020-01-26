@@ -66,13 +66,37 @@ img {
   left: 20px;
   bottom: 22px;
 }
+.nav-menu a i {
+    font-size: 20px;
+}
 
 /* Portfolio */
+.portfolio-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.portfolio-grid > div {
+  flex-grow: 1;
+  padding: 15px;
+}
+.portfolio-grid > div .card .portfolio-over .card-title {
+  font-size: 24px;
+  margin-bottom: 0;
+}
 .card.card-block {
   border: 1px solid #3ca48b;
+  height: 100%;
 }
-.portfolio-grid .row > div .card .portfolio-over .card-title {
-  font-size: 24px;
+.card.card-block a {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: .6s;
+}
+.card.card-block a:hover {
+  color: #fff;
+  opacity: .8;
 }
 
 /* Presupuesto */
@@ -185,6 +209,42 @@ a.titular:hover {
 }
 .single a {
   color: #276852;
+}
+
+/* Proyectos (zona admin) */
+.lista-proyectos ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1em;
+  border: 1px solid #3ca48b;
+}
+.lista-proyectos li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5px 10px;
+  border: 1px solid #3ca48b;
+}
+.lista-proyectos li:not(:first-child) {
+  border-top: none;
+}
+.lista-proyectos li:nth-child(even) {
+  background-color: rgba(94, 182, 164, 0.15);
+}
+.lista-proyectos li a i {
+  color: #3ca48b;
+  padding: 5px 8px;
+}
+.miniatura {
+  max-width: 120px;
+  height: 50px;
+  padding: 0 10px;
+}
+.miniatura img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-position: top;
 }
 
 /* Footer */

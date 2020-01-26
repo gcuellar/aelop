@@ -84,7 +84,7 @@ $(document).ready(function() {
   });
 
 //Carga el contendio inicial
-cargarContenido('noticias.php');
+cargarContenido('aproyectos.php');
 
 });
 
@@ -244,4 +244,66 @@ function pintarMapa() {
     geocoder: L.Control.Geocoder.nominatim()
   });
   ruta.addTo(mimapa);
+}
+
+// Funcion para cargar los datos del proyecto a editar
+function cargarDatosProyecto(idproyecto){
+  var objHttp=null;
+  if(window.XMLHttpRequest) { objHttp = new XMLHttpRequest(); }
+  else if(window.ActiveXObject) { objHttp = new ActiveXObject("Microsoft.XMLHTTP"); }
+  objHttp.open("GET", "cargarDatosProyecto.php?id="+idproyecto, true);
+  objHttp.onreadystatechange = function() {
+    if (objHttp.readyState==4 && objHttp.status==200) {
+      var objProyecto = JSON.parse(objHttp.responseText);
+      document.getElementById('form-title').innerHTML = "Actualizar proyecto seleccionado";
+      document.getElementById('p-idproyecto').value = objProyecto.idproyecto;
+      document.getElementById('p-nombre').value = objProyecto.nombre;
+      document.getElementById('p-altimagen').value = objProyecto.altimg;
+      document.getElementById('p-datos').value = objProyecto.datos;
+      document.getElementById('p-tecnologia').value = objProyecto.tecnologia;
+      document.getElementById('p-tiempo').value = objProyecto.tiempo;
+    }
+  }
+  objHttp.send(null);
+}
+
+// Funcion para guardar los datos del proyecto en la bbdd
+function guardarProyecto(){
+  var datap = new FormData();
+  var idproyecto = document.getElementById('p-idproyecto').value;
+  var nombre = document.getElementById('p-nombre').value;
+  var nombreimagen = '';
+  var uploadfile = document.getElementById('p-imagen').files[0];
+  if (uploadfile) {
+    datap.append('fileimg', uploadfile);
+    nombreimagen = uploadfile.name;
+  }
+  var altimg = document.getElementById('p-altimagen').value;
+  var datos = document.getElementById('p-datos').value;
+  var tecnologia = document.getElementById('p-tecnologia').value;
+  var tiempo = document.getElementById('p-tiempo').value;
+  // var url = "guadarDatosProyecto.php?idproyecto="+idproyecto+"&nombre="+nombre+"&imagen="+nombreimagen+"&altimg="+altimg+"&datos="+datos+"&tecnologia="+tecnologia+"&tiempo="+tiempo;
+  var url = "guadarDatosProyecto.php";
+
+  datap.append('idproyecto', idproyecto);
+  datap.append('nombre', nombre);
+  datap.append('imagen', nombreimagen);
+  datap.append('altimg', altimg);
+  datap.append('datos', datos);
+  datap.append('tecnologia', tecnologia);
+  datap.append('tiempo', tiempo);
+
+  var objHttp=null;
+  if(window.XMLHttpRequest) { objHttp = new XMLHttpRequest(); }
+  else if(window.ActiveXObject) { objHttp = new ActiveXObject("Microsoft.XMLHTTP"); }
+  objHttp.open("POST", url, true);
+  // objHttp.setRequestHeader("X-File-Name", encodeURIComponent(nombreimagen));
+  // objHttp.setRequestHeader("Content-Type", "multipart/form-data");
+  objHttp.onreadystatechange = function() {
+    if (objHttp.readyState==4 && objHttp.status==200) {
+      // cargarContenido('aproyectos.php');
+      document.getElementById('result').innerHTML = objHttp.responseText;
+    }
+  }
+  objHttp.send(datap);
 }

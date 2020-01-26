@@ -18,7 +18,7 @@
                 $titular = $row['titular'];
       					// echo $row['titular'].' - '.$row['encabezado'].' '.$row['imagen'].' '.$row['fecha'].'<br />';
                 $cadena .= "<div class='noticia'><div class='foto-fecha'><div class='foto'>";
-                $cadena .= "<img src='".$row['imagen']."' alt='".$row['titular']."'></div>";
+                $cadena .= "<img src='img/".$row['imagen']."' alt='".$row['titular']."'></div>";
                 $cadena .= "<div class='fecha'>".$row['fecha']."</div></div>";
                 $cadena .= "<a class='titular' onclick='cargarContenido(".$single.");' target='_blank'>";
                 $cadena .= "<h4>".$titular."</h4></a>";
