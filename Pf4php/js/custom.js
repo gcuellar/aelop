@@ -84,7 +84,7 @@ $(document).ready(function() {
   });
 
 //Carga el contendio inicial
-cargarContenido('aproyectos.php');
+cargarContenido('noticias.php');
 
 });
 
@@ -301,9 +301,118 @@ function guardarProyecto(){
   // objHttp.setRequestHeader("Content-Type", "multipart/form-data");
   objHttp.onreadystatechange = function() {
     if (objHttp.readyState==4 && objHttp.status==200) {
-      // cargarContenido('aproyectos.php');
       document.getElementById('result').innerHTML = objHttp.responseText;
+      setTimeout('cargarContenido("aproyectos.php");$(window).scrollTop(300);',3500);
     }
   }
   objHttp.send(datap);
+}
+
+// Función para procesar el registro de usuarios
+function procesarRegistro(userForm) {
+  var email = /^(.+\@.+\..+)$/;
+  if(!email.test(document.getElementById('u-username').value)) {
+    document.getElementById('u-result').innerHTML = 'El usuario debe ser un email con formato válido';
+    limpiarFormularioUsuario();
+  }
+  else { // si el nombre de usuario es un email váilido se agrega a la bbdd
+    nuevoUsuario();
+  }
+}
+
+// Funcion para agregar nuevos usuarios a la bbdd
+function nuevoUsuario(){
+  var datau = new FormData();
+  var username = document.getElementById('u-username').value;
+  var pass = document.getElementById('u-pass').value;
+  var url = "crearNuevoUsuario.php";
+
+  datau.append('username', username);
+  datau.append('pass', pass);
+
+  var objHttp=null;
+  if(window.XMLHttpRequest) { objHttp = new XMLHttpRequest(); }
+  else if(window.ActiveXObject) { objHttp = new ActiveXObject("Microsoft.XMLHTTP"); }
+  objHttp.open("POST", url, true);
+  objHttp.onreadystatechange = function() {
+    if (objHttp.readyState==4 && objHttp.status==200) {
+      document.getElementById('u-result').innerHTML = objHttp.responseText;
+      limpiarFormularioUsuario();
+    }
+  }
+  objHttp.send(datau);
+}
+
+// Funcion para limpiar formulario de acceso y reistro de usuarios
+function limpiarFormularioUsuario(){
+  document.getElementById('u-username').value = '';
+  document.getElementById('u-pass').value = '';
+}
+
+// Funcion de login para usuarios
+function accesoUsuario(){
+  var datau = new FormData();
+  var username = document.getElementById('u-username').value;
+  var pass = document.getElementById('u-pass').value;
+  var url = "loginUsuario.php";
+
+  datau.append('username', username);
+  datau.append('pass', pass);
+
+  var objHttp=null;
+  if(window.XMLHttpRequest) { objHttp = new XMLHttpRequest(); }
+  else if(window.ActiveXObject) { objHttp = new ActiveXObject("Microsoft.XMLHTTP"); }
+  objHttp.open("POST", url, true);
+  objHttp.onreadystatechange = function() {
+    if (objHttp.readyState==4 && objHttp.status==200) {
+      document.getElementById('u-result').innerHTML = objHttp.responseText;
+      window.location = "index.php";
+    }
+    else if (objHttp.status==401) {
+      document.getElementById('u-result').innerHTML = objHttp.responseText;
+      setTimeout('limpiarFormularioUsuario()',2500);
+    }
+  }
+  objHttp.send(datau);
+}
+
+// Funcion para modificar datos de clientes de la bbdd
+function editarDatosPersonales(){
+  var datac = new FormData();
+  var idcliente = document.getElementById('c-idcliente').value;
+  var nombre = document.getElementById('c-nombre').value;
+  var apellidos = document.getElementById('c-apellidos').value;
+  var telefono = document.getElementById('c-telefono').value;
+  var url = "guadarDatosCliente.php";
+
+  datac.append('idcliente', idcliente);
+  datac.append('nombre', nombre);
+  datac.append('apellidos', apellidos);
+  datac.append('telefono', telefono);
+
+  var objHttp=null;
+  if(window.XMLHttpRequest) { objHttp = new XMLHttpRequest(); }
+  else if(window.ActiveXObject) { objHttp = new ActiveXObject("Microsoft.XMLHTTP"); }
+  objHttp.open("POST", url, true);
+  objHttp.onreadystatechange = function() {
+    if (objHttp.readyState==4 && objHttp.status==200) {
+      document.getElementById('c-result').innerHTML = objHttp.responseText;
+    }
+  }
+  objHttp.send(datac);
+}
+// Funcion para cerrar sesion de usuario
+function cerrarSesion(){
+  var url = "cerrarSesion.php";
+
+  var objHttp=null;
+  if(window.XMLHttpRequest) { objHttp = new XMLHttpRequest(); }
+  else if(window.ActiveXObject) { objHttp = new ActiveXObject("Microsoft.XMLHTTP"); }
+  objHttp.open("POST", url, true);
+  objHttp.onreadystatechange = function() {
+    if (objHttp.readyState==4 && objHttp.status==200) {
+      location.reload();
+    }
+  }
+  objHttp.send(null);
 }

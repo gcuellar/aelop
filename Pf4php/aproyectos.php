@@ -1,4 +1,4 @@
-<?php include 'conection.php' ?>
+<?php include 'conection.php'; ?>
 <section class="misproyectos" id="proyectos">
   <div class="container text-center">
     <h2>Proyectos</h2>

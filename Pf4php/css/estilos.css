@@ -1,5 +1,8 @@
 /* color logo oscuro #276852 */
 /* color logo claro #3ca48b */
+html {
+  scroll-behavior: smooth;
+}
 p {
   color: #276852;
 }
@@ -30,6 +33,7 @@ img {
 }
 .stats-col .circle {
   border: 6px solid #276852;
+  line-height: 1.4;
 }
 .stats-col .circle .stats-no {
   background-color: #3ca48b;
@@ -166,7 +170,7 @@ div#noticias {
 .noticia {
   padding: 15px;
   margin-bottom: 25px;
-  flex-basis: 50%;
+  flex-basis: 33%;
   flex-grow: 1;
 }
 .foto {
@@ -245,6 +249,41 @@ a.titular:hover {
   width: 100%;
   height: 100%;
   object-position: top;
+}
+
+/* Area login */
+section.area-login {
+  text-align: center;
+}
+section.area-login p {
+  margin-bottom: 0;
+}
+div#login form {
+  margin: 0 auto;
+  display: inline-block;
+  text-align: left;
+}
+#login .botones {
+  margin: 15px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.botones button {
+  flex-basis: calc(50% - 30px);
+}
+
+/* Area datos paersonales de usuario */
+section.mi-cuenta {
+  text-align: center;
+}
+section.mi-cuenta p {
+  margin-bottom: 0;
+}
+form.datos-personales {
+  margin: 0 auto;
+  display: inline-block;
+  text-align: left;
 }
 
 /* Footer */

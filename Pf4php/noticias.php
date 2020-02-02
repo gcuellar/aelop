@@ -1,12 +1,33 @@
 <?php include 'conection.php' ?>
 <section>
   <div class="contenido-inicial text-center">
+    <h2> Sobre mí </h2>
+    <p>Ingeniera técnica en informática de gestión y en proceso de graduarme en la especialidad de ingeniería del software.</p>
+    <h3>Conocimientos:</h3>
+    <div class="row stats-row">
+      <div class="stats-col text-center col-md-3 col-xs-12">
+        <div class="circle"><span class="stats-no">10</span>HTML</div>
+      </div>
+      <div class="stats-col text-center col-md-3 col-xs-12">
+        <div class="circle"><span class="stats-no">10</span>CSS y SASS</div>
+      </div>
+      <div class="stats-col text-center col-md-3 col-xs-12">
+        <div class="circle"><span class="stats-no">9</span>PHP</div>
+      </div>
+      <div class="stats-col text-center col-md-3 col-xs-12">
+        <div class="circle"><span class="stats-no">8</span>JavaScript y AJAX</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="contenido-inicial text-center">
     <h2> Noticias </h2>
     <div id="noticias">
       <?php //Si hay conexión con la bbdd
         // $conn = mysqli_connect($hostname, $username, $password, $dbname);
         if ($conn) {
-          $sql = "SELECT * FROM noticias";
+          $sql = "SELECT * FROM noticias LIMIT 5";
       		$result = mysqli_query($conn, $sql);
       		if($result) {
       			// Si hay registros

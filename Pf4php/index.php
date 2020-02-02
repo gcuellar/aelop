@@ -1,4 +1,4 @@
-<?php include 'conection.php' ?>
+<?php include 'conection.php'; ?>
 <html lang="es">
 
 <head id="head">
@@ -32,14 +32,22 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li><a id="inicio" class="activo" onclick="cargarContenido('noticias.php'); activarItem('inicio');">Inicio</a></li>
-          <li><a id="about" onclick="cargarContenido('about.html');activarItem('about');">Sobre mi</a></li>
           <li><a id="portfolio" onclick="cargarContenido('portfolio.php');activarItem('portfolio');">Portfolio</a></li>
           <li><a id="presupuesto" onclick="cargarContenido('budget.html');activarItem('presupuesto');">Solicita presupuesto</a></li>
           <li><a id="donde" onclick="cargarContenido('donde.html');activarItem('donde');">Dónde estamos</a></li>
           <li><a id="contacto" onclick="cargarContenido('contact.html');activarItem('contacto');">Contacto</a></li>
-          <li><a id="admin-prycts" onclick="cargarContenido('aproyectos.php');activarItem('admin-prycts');">Administrar proyectos</a></li>
           <li><a id="citas" onclick="cargarContenido('vercitas.php');activarItem('citas');">Citas</a></li>
-          <li><a id="admin-usrs" onclick="cargarContenido('ausuarios.php');activarItem('admin-usrs');"><i class="fa fa-user"></i></a></li>
+          <?php if ($_SESSION['usuario'] == ''){ ?>
+            <li><a id="login-usrs" onclick="cargarContenido('controlUsuarios.php');activarItem('login-usrs');">Login <i class="fa fa-user"></i></a></li>
+          <?php } else { ?>
+            <?php if ($_SESSION['usuario'] == '1'){ ?>
+              <li><a id="admin-usrs" onclick="cargarContenido('gestionDatosPersonales.php');activarItem('admin-usrs');">Mi cuenta <i class="fa fa-user"></i></a></li>
+            <?php }
+            else if ($_SESSION['usuario'] == 'admin') {?>
+              <li><a id="admin-prycts" onclick="cargarContenido('aproyectos.php');activarItem('admin-prycts');">Administrar proyectos</a></li>
+            <?php }?>
+            <li><a onclick="cerrarSesion(); activarItem('inicio');"><i class="fa fa-power-off"></i></a></li>
+          <?php }?>
         </ul>
       </nav>
       <!-- #nav-menu-container -->
@@ -53,67 +61,11 @@
   <div class="cuerpo container">
     <div class="row">
       <!-- Contenido principal -->
-      <div class="col-sm-8 col-xs-12">
+      <div class="col-sm-12 col-xs-12">
         <div id="contenedor-principal" class="content">
         </div>
       </div>
       <!-- /Contenido principal -->
-
-      <!-- Sidebar -->
-      <div class="col-sm-4 col-xs-12">
-        <div id="login" class="sidebar">
-          <h2> Usuarios </h2>
-          <form class="login" action="index.php" method="post">
-            <label for="username">Email</label>
-            <input type="text" name="username" value="">
-            <label for="pass">Contraseña</label>
-            <input type="password" name="pass" value="">
-          </form>
-          <!-- <?php if ($user==admin){ ?>
-            <h2> Funciones de administrador </h2>
-          <?php }
-          elseif ($esusuario) { ?>
-            <h2> Funciones de usuario </h2>
-          <?php } ?> -->
-
-<?php
-session_start();
-if ($conn) {
-  if ($_POST['usuario']){
-  // UTILIZANDO MYSQL
-
-  $user = mysqli_real_escape_string($_POST['usuario']);
-  $key = mysqli_real_escape_string($_POST['clave']);
-
-
-  $sql = "select usuario, clave,idusuario from usuarios where usuario = '$user' and clave ='$key'";
-  $result = mysqli_query($conn, $sql);
-
-        if(mysqli_num_rows($result) !== 0) {
-          $row=mysqli_fetch_array($result);
-          $_SESSION['key_id'] = md5(session_id());
-          $_SESSION['idusuario'] = md5($row['idusuario']);
-          $_SESSION['esadmin'] = $row['esadmin'];
-          header('Location: index.php');
-    }else{
-      echo 'Datos de acceso erroneos';
-    }
-  }
-}
-else {
-  echo ('No pudo conectarse: '. mysqli_connect_error());
-}
-
-?>
-<form class="proyectos" action="?" method="post">
-  Usuario <input type="text" name="usuario" /><br />
-    Clave <input type="password" name="clave" />
-    <input type="submit" />
-</form>
-
-        </div>
-      </div>
-      <!-- /Sidebar -->
     </div>
   </div>
 

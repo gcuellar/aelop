@@ -7,18 +7,6 @@
 
   <?php
     if ($conn) { //Si hay conexión con la bbdd
-      // COMPRUEBA USUARIO
-      $esadmin = 1;
-      // MODIFICA DATOS DE PROYECTOS
-      if ($esadmin) {
-        // formulario para proyectos
-        ?>
-        <form class="proyectos" action="?" method="post">
-          
-        </form>
-        <?php
-      }
-
       // OBTIENE DATOS DE PROYECTOS
       $sql = "SELECT * FROM proyectos";
       $result = mysqli_query($conn, $sql);

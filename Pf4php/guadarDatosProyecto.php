@@ -1,13 +1,16 @@
 <?php include 'conection.php';
-// Sube la imagen
-$tmpFile = $_FILES['fileimg']['tmp_name'];
-$newFile = 'img/'.$_FILES['fileimg']['name'];
-$result = move_uploaded_file($tmpFile, $newFile);
-echo $_FILES['fileimg']['name'];
-if ($result) {
-     echo ' was uploaded<br />';
-} else {
-     echo ' failed to upload<br />';
+// Si se carga una imagen
+if ($_FILES) {
+  // Sube la imagen
+  $tmpFile = $_FILES['fileimg']['tmp_name'];
+  $newFile = 'img/'.$_FILES['fileimg']['name'];
+  $result = move_uploaded_file($tmpFile, $newFile);
+  echo $_FILES['fileimg']['name'];
+  if ($result) {
+    echo ' ha sido guardada<br />';
+  } else {
+    echo ' no se ha guardado<br />';
+  }
 }
 if ($conn) { //Si hay conexión con la bbdd
   // GUARDA LOS DATOS DEL PROYECTO
