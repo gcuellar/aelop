@@ -27,7 +27,7 @@
       <?php //Si hay conexión con la bbdd
         // $conn = mysqli_connect($hostname, $username, $password, $dbname);
         if ($conn) {
-          $sql = "SELECT * FROM noticias LIMIT 5";
+          $sql = "SELECT * FROM noticias ORDER BY `idnoticia` DESC LIMIT 5";
       		$result = mysqli_query($conn, $sql);
       		if($result) {
       			// Si hay registros
