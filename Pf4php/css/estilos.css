@@ -6,6 +6,9 @@ html {
 p {
   color: #276852;
 }
+a{
+  cursor: pointer;
+}
 .hero {
   background-image: url(../img/banner-web.jpg);
   max-height: 150px;
@@ -221,6 +224,8 @@ a.titular:hover {
   padding-left: 0;
   margin-bottom: 1em;
   border: 1px solid #3ca48b;
+  display: flex;
+  flex-wrap: wrap;
 }
 .lista-proyectos li {
   display: flex;
@@ -228,12 +233,16 @@ a.titular:hover {
   align-items: center;
   padding: 5px 10px;
   border: 1px solid #3ca48b;
+  flex-basis: 25%;
+  min-width: 260px;
+  flex-grow: 1;
 }
 .lista-proyectos li:not(:first-child) {
   border-top: none;
 }
 .lista-proyectos li:nth-child(even) {
   background-color: rgba(94, 182, 164, 0.15);
+  flex-grow: 1.1;
 }
 .lista-proyectos li a i {
   color: #3ca48b;
@@ -249,6 +258,41 @@ a.titular:hover {
   width: 100%;
   height: 100%;
   object-position: top;
+}
+.centrar-form {
+  text-align: center;
+}
+.centrar-form form {
+  text-align: left;
+  display: inline-block;
+}
+
+/* Usuarios (zona admin) */
+.tabla-clientes table {
+  margin: 1em auto;
+  border: 1px solid #3ca48b;
+}
+.tabla-clientes tr {
+  padding: 5px 10px;
+  border: 1px solid #3ca48b;
+}
+.tabla-clientes th {
+  font-weight: 600;
+  color: #276852;
+  background-color: rgba(40, 158, 133, .75);
+  text-align: center;
+  padding: 5px 10px;
+}
+.tabla-clientes td {
+  padding: 5px 10px;
+  border: 1px solid #3ca48b;
+}
+.tabla-clientes tr:nth-child(even) {
+  background-color: rgba(94, 182, 164, 0.15);
+}
+.tabla-clientes a i {
+  color: #3ca48b;
+  padding: 5px 8px;
 }
 
 /* Area login */
@@ -273,7 +317,7 @@ div#login form {
   flex-basis: calc(50% - 30px);
 }
 
-/* Area datos paersonales de usuario */
+/* Area datos personales de usuario */
 section.mi-cuenta {
   text-align: center;
 }

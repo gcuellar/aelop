@@ -5,13 +5,14 @@
     <p>Edite sus datos en el formulario</p>
   </div>
   <?php
+    $idusuario = $_SESSION['idusuario'];
     $idcliente = '';
     $nombre = '';
     $apellidos = '';
     $telefono = '';
     if ($conn) { //Si hay conexión con la
       // OBTIENE DATOS DEL USUARIO
-      $sql = "SELECT * FROM clientes WHERE usuario='".$_SESSION['idusuario']."'";
+      $sql = "SELECT * FROM clientes WHERE usuario='".$idusuario."'";
       $result = mysqli_query($conn, $sql);
       if($result) {
         // Si hay registros
@@ -22,12 +23,9 @@
             $apellidos = $row['apellidos'];
             $telefono = $row['telefono'];
           }
-          echo 'hay registro'; echo $_SESSION['idusuario'];
-        } else {
-          echo 'No se han encontrado registros';
         }
       }
-      $sql = "SELECT user FROM usuarios WHERE idusuario='".$_SESSION['idusuario']."'";
+      $sql = "SELECT user FROM usuarios WHERE idusuario='".$idusuario."'";
       $result = mysqli_query($conn, $sql);
       if($result) {
         // Si hay registros
@@ -45,18 +43,18 @@
       ?>
       <div id="datos-personales">
         <form class="datos-personales">
-          <input id="c-idcliente" type="hidden" name="idcliente" value="<?php echo $idcliente ?>">
+          <input id="dp-idcliente" type="hidden" name="idcliente" value="<?php echo $idcliente ?>">
           <label for="email">Usuario
-          <input readonly id="c-email" type="text" name="email" value="<?php echo $email ?>"></label>
+          <input readonly id="dp-email" type="text" name="email" value="<?php echo $email ?>"></label>
           <label for="nombre">Nombre
-          <input id="c-nombre" type="text" name="nombre" value="<?php echo $nombre ?>"></label>
+          <input id="dp-nombre" type="text" name="nombre" value="<?php echo $nombre ?>"></label>
           <label for="apellidos">Apellidos
-          <input id="c-apellidos" type="text" name="apellidos" value="<?php echo $apellidos ?>"></label>
+          <input id="dp-apellidos" type="text" name="apellidos" value="<?php echo $apellidos ?>"></label>
           <label for="telefono">Teléfono
-          <input id="c-telefono" type="text" name="telefono" value="<?php echo $telefono ?>"></label>
-          <button type="button" onclick="editarDatosPersonales();" name="guardar">Guardar datos</button>
+          <input id="dp-telefono" type="text" name="telefono" value="<?php echo $telefono ?>"></label>
+          <br><button type="button" onclick="editarDatosPersonales(<?php echo $idusuario ?>);" name="guardar">Guardar datos</button>
         </form>
-        <div id="c-result" class="res"> </div>
+        <div id="dp-result" class="res"> </div>
       </div>
       <?php
 

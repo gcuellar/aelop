@@ -38,28 +38,27 @@
 
       // formulario para proyectos
       ?>
-      <h3 id="form-title">Añadir nuevo proyecto</h3>
-      <form class="proyectos">
-        <input id="p-idproyecto" type="hidden" name="idproyecto" value="">
-        <label for="nombre">Nombre
-        <input id="p-nombre" type="text" name="nombre" value=""></label>
-        <label for="imagen">Imagen
-        <input id="p-imagen" type="file" name="imagen" value=""></label>
-        <label for="altimagen">Texto alternativo de la imagen
-        <input id="p-altimagen" type="text" name="altimagen" value=""></label>
-        <label for="datos">Descripción del proyecto
-        <input id="p-datos" type="textarea" name="datos" value=""></label>
-        <label for="tecnologia">Tecnología
-        <input id="p-tecnologia" type="text" name="tecnologia" value=""></label>
-        <label for="tiempo">Tiempo
-        <input id="p-tiempo" type="text" name="tiempo" value=""></label>
-        <button type="button" onclick="guardarProyecto();" name="guardar">Guardar</button>
-        <div id="result" class="res"> </div>
-      </form>
-      <?php
-
-
-      mysqli_close($conn); //cierra la conxión
+      <div class="centrar-form">
+        <h3 id="form-title">Añadir nuevo proyecto</h3>
+        <form class="proyectos">
+          <input id="p-idproyecto" type="hidden" name="idproyecto" value="">
+          <label for="nombre">Nombre
+          <input id="p-nombre" type="text" name="nombre" value=""></label>
+          <label for="imagen">Imagen
+          <input id="p-imagen" type="file" name="imagen" value=""></label>
+          <label for="altimagen">Texto alternativo de la imagen
+          <input id="p-altimagen" type="text" name="altimagen" value=""></label>
+          <label for="datos">Descripción del proyecto
+          <input id="p-datos" type="textarea" name="datos" value=""></label>
+          <label for="tecnologia">Tecnología
+          <input id="p-tecnologia" type="text" name="tecnologia" value=""></label>
+          <label for="tiempo">Tiempo
+          <input id="p-tiempo" type="text" name="tiempo" value=""></label>
+          <button type="button" onclick="guardarProyecto();" name="guardar">Guardar</button>
+          <div id="result" class="res"> </div>
+        </form>
+      </div>
+      <?php mysqli_close($conn); //cierra la conxión
     }
     else {
       echo ('No pudo conectarse: '. mysqli_connect_error());

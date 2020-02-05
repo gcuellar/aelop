@@ -376,14 +376,14 @@ function accesoUsuario(){
   objHttp.send(datau);
 }
 
-// Funcion para modificar datos de clientes de la bbdd
+// Funcion de usuario para modificar sus datos de usuario de la bbdd
 function editarDatosPersonales(){
   var datac = new FormData();
-  var idcliente = document.getElementById('c-idcliente').value;
-  var nombre = document.getElementById('c-nombre').value;
-  var apellidos = document.getElementById('c-apellidos').value;
-  var telefono = document.getElementById('c-telefono').value;
-  var url = "guadarDatosCliente.php";
+  var idcliente = document.getElementById('dp-idcliente').value;
+  var nombre = document.getElementById('dp-nombre').value;
+  var apellidos = document.getElementById('dp-apellidos').value;
+  var telefono = document.getElementById('dp-telefono').value;
+  var url = "guadarDatosPersonales.php";
 
   datac.append('idcliente', idcliente);
   datac.append('nombre', nombre);
@@ -396,11 +396,64 @@ function editarDatosPersonales(){
   objHttp.open("POST", url, true);
   objHttp.onreadystatechange = function() {
     if (objHttp.readyState==4 && objHttp.status==200) {
-      document.getElementById('c-result').innerHTML = objHttp.responseText;
+      document.getElementById('dp-result').innerHTML = objHttp.responseText;
+      setTimeout('cargarContenido("gestionDatosPersonales.php");$(window).scrollTop(300);',3500);
     }
   }
   objHttp.send(datac);
 }
+
+// Funcion del administrador para modificar datos de clientes de la bbdd
+function editarDatosClientes(){
+  var datacli = new FormData();
+  var idcliente = document.getElementById('cli-idcliente').value;
+  var idusuario = document.getElementById('cli-idusuario').value;
+  var nombre = document.getElementById('cli-nombre').value;
+  var apellidos = document.getElementById('cli-apellidos').value;
+  var telefono = document.getElementById('cli-telefono').value;
+  var url = "guadarDatosCliente.php";
+
+  datacli.append('idcliente', idcliente);
+  datacli.append('idusuario', idusuario);
+  datacli.append('nombre', nombre);
+  datacli.append('apellidos', apellidos);
+  datacli.append('telefono', telefono);
+
+  var objHttp=null;
+  if(window.XMLHttpRequest) { objHttp = new XMLHttpRequest(); }
+  else if(window.ActiveXObject) { objHttp = new ActiveXObject("Microsoft.XMLHTTP"); }
+  objHttp.open("POST", url, true);
+  objHttp.onreadystatechange = function() {
+    if (objHttp.readyState==4 && objHttp.status==200) {
+      document.getElementById('cli-result').innerHTML = objHttp.responseText;
+      setTimeout('cargarContenido("ausuarios.php");$(window).scrollTop(300);',3500);
+    }
+  }
+  objHttp.send(datacli);
+}
+
+
+// Funcion para cargar los datos del cliente a editar
+function cargarDatosCliente(idusuario){
+  var objHttp=null;
+  if(window.XMLHttpRequest) { objHttp = new XMLHttpRequest(); }
+  else if(window.ActiveXObject) { objHttp = new ActiveXObject("Microsoft.XMLHTTP"); }
+  objHttp.open("GET", "cargarDatosCliente.php?id="+idusuario, true);
+  objHttp.onreadystatechange = function() {
+    if (objHttp.readyState==4 && objHttp.status==200) {
+      var objCliente = JSON.parse(objHttp.responseText);
+      document.getElementById('form-title').innerHTML = "Actualizar cliente seleccionado";
+      document.getElementById('cli-idusuario').value = idusuario;
+      document.getElementById('cli-idcliente').value = objCliente.idcliente;
+      document.getElementById('cli-nombre').value = objCliente.nombre;
+      document.getElementById('cli-apellidos').value = objCliente.apellidos;
+      document.getElementById('cli-telefono').value = objCliente.telefono;
+      document.getElementById('cli-email').value = objCliente.user;
+    }
+  }
+  objHttp.send(null);
+}
+
 // Funcion para cerrar sesion de usuario
 function cerrarSesion(){
   var url = "cerrarSesion.php";
