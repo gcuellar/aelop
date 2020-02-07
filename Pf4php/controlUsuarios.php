@@ -17,12 +17,6 @@
       </div>
     </form>
     <div id="u-result" class="res"> </div>
-    <?php if ($_SESSION['usuario'] == 'admin'){ ?>
-      <h2> Funciones de administrador </h2>
-    <?php }
-    elseif ($_SESSION['usuario']) { ?>
-      <h2> Funciones de usuario </h2>
-    <?php } ?>
   </div>
 
 </section>

@@ -32,13 +32,13 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li><a id="inicio" class="activo" onclick="cargarContenido('noticias.php'); activarItem('inicio');">Inicio</a></li>
-          <?php if ($_SESSION['usuario'] != 'admin'): ?>
+          <?php if ($_SESSION)  if ($_SESSION['usuario'] != 'admin'): ?>
             <li><a id="portfolio" onclick="cargarContenido('portfolio.php');activarItem('portfolio');">Portfolio</a></li>
           <?php endif; ?>
           <li><a id="presupuesto" onclick="cargarContenido('budget.html');activarItem('presupuesto');">Solicita presupuesto</a></li>
           <li><a id="donde" onclick="cargarContenido('donde.html');activarItem('donde');">Dónde estamos</a></li>
-          <li><a id="contacto" onclick="cargarContenido('contact.html');activarItem('contacto');">Contacto</a></li>
-          <?php if ($_SESSION['usuario'] == ''){ ?>
+          <li><a id="contacto" onclick="cargarContenido('contact.php');activarItem('contacto');">Contacto</a></li>
+          <?php if ($_SESSION) if ($_SESSION['usuario'] == ''){ ?>
             <li><a id="login-usrs" onclick="cargarContenido('controlUsuarios.php');activarItem('login-usrs');"><i class="fa fa-user"> </i> Login</a></li>
           <?php } else { ?>
             <?php if ($_SESSION['usuario'] == '1'){ ?>

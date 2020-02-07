@@ -309,7 +309,7 @@ function guardarProyecto(){
 }
 
 // Función para procesar el registro de usuarios
-function procesarRegistro(userForm) {
+function procesarRegistro() {
   var email = /^(.+\@.+\..+)$/;
   if(!email.test(document.getElementById('u-username').value)) {
     document.getElementById('u-result').innerHTML = 'El usuario debe ser un email con formato válido';
@@ -432,7 +432,6 @@ function editarDatosClientes(){
   objHttp.send(datacli);
 }
 
-
 // Funcion para cargar los datos del cliente a editar
 function cargarDatosCliente(idusuario){
   var objHttp=null;
@@ -452,6 +451,124 @@ function cargarDatosCliente(idusuario){
     }
   }
   objHttp.send(null);
+}
+
+// Funcion de usuario para pedir cita
+function nuevoClienteCita(){
+  var datacita = new FormData();
+  var idusuario = document.getElementById('ci-idusuario').value;
+  var nombre = document.getElementById('ci-nombre').value;
+  var apellidos = document.getElementById('ci-apellidos').value;
+  var telefono = document.getElementById('ci-telefono').value;
+  var fecha = document.getElementById('ci-fecha').value;
+  var url = "guadarClienteCita.php";
+
+  var fechaSolicitada = new Date(fecha);
+  var fechaActual = new Date();
+
+  fechaActual.setDate(fechaActual.getDate()+3); // para asegurarse una antelación de tres días
+
+  if ( fechaSolicitada > fechaActual ) {
+    datacita.append('idusuario', idusuario);
+    datacita.append('nombre', nombre);
+    datacita.append('apellidos', apellidos);
+    datacita.append('telefono', telefono);
+    datacita.append('fecha', fecha);
+
+    var objHttp=null;
+    if(window.XMLHttpRequest) { objHttp = new XMLHttpRequest(); }
+    else if(window.ActiveXObject) { objHttp = new ActiveXObject("Microsoft.XMLHTTP"); }
+    objHttp.open("POST", url, true);
+    objHttp.onreadystatechange = function() {
+      if (objHttp.readyState==4 && objHttp.status==200) {
+        document.getElementById('ci-result').innerHTML = objHttp.responseText;
+        setTimeout('cargarContenido("micita.php");',3000);
+      }
+    }
+    objHttp.send(datacita);
+  }
+  else {
+    document.getElementById('ci-result').innerHTML = 'Debe pedir cita con al menos 72 horas de antelación';
+  }
+}
+
+// Funcion de cliente para pedir cita
+function nuevaCita(){
+  var datacita = new FormData();
+  var idcliente = document.getElementById('ci-idcliente').value;
+  var fecha = document.getElementById('ci-fecha').value;
+  var fechaSolicitada = new Date(fecha);
+  var fechaActual = new Date();
+  var url = "guadarCita.php";
+
+  fechaSolicitada.setDate(fechaSolicitada.getDate()-3); // para asegurarse una antelación de tres días
+
+  if ( fechaSolicitada > fechaActual ) {
+    datacita.append('idcliente', idcliente);
+    datacita.append('fecha', fecha);
+
+    var objHttp=null;
+    if(window.XMLHttpRequest) { objHttp = new XMLHttpRequest(); }
+    else if(window.ActiveXObject) { objHttp = new ActiveXObject("Microsoft.XMLHTTP"); }
+    objHttp.open("POST", url, true);
+    objHttp.onreadystatechange = function() {
+      if (objHttp.readyState==4 && objHttp.status==200) {
+        document.getElementById('ci-result').innerHTML = objHttp.responseText;
+        setTimeout('cargarContenido("micita.php");',3000);
+      }
+    }
+    objHttp.send(datacita);
+  }
+  else {
+    document.getElementById('ci-result').innerHTML = 'Debe pedir cita con al menos 72 horas de antelación';
+  }
+}
+
+// Función para procesar las modificaciones de cita
+function modificarCita(fechaCita) {
+  var fechaActual = new Date();
+  var nuevaFecha = document.getElementById('ci-fecha').value;
+  var dateNuevaFecha = new Date(nuevaFecha);
+  var dateFechaCita = new Date(fechaCita);
+  var fechaAntelacion = new Date();
+
+  fechaAntelacion.setDate(fechaAntelacion.getDate()+3);
+
+  if(dateFechaCita.getTime() > fechaAntelacion.getTime()) { //si quedan al menso 3 días para la cita
+    if (dateNuevaFecha.getTime() > fechaAntelacion.getTime()) { //si quedan al menso 3 días para la nueva fecha
+      editarCita(); //modificamos la cita en bbdd
+    }
+    else { //Si la fecha actual no es al menos tres días antes de la cita
+      document.getElementById('ci-result').innerHTML = 'La fecha de la cita debe pedirse con al menos 3 días de antelación';
+    }
+  } else {
+    document.getElementById('ci-result').innerHTML = 'Solo se puede modificar la cita con al menos 3 días de antelación';
+  }
+}
+
+// Funcion del usuario para modificar datos de su cita de la bbdd
+function editarCita(){
+  var datacita = new FormData();
+  var idcliente = document.getElementById('ci-idcliente').value;
+  var idcita = document.getElementById('ci-idcita').value;
+  var fecha = document.getElementById('ci-fecha').value;
+  var url = "editarCita.php";
+
+  datacita.append('idcliente', idcliente);
+  datacita.append('idcita', idcita);
+  datacita.append('fecha', fecha);
+
+  var objHttp=null;
+  if(window.XMLHttpRequest) { objHttp = new XMLHttpRequest(); }
+  else if(window.ActiveXObject) { objHttp = new ActiveXObject("Microsoft.XMLHTTP"); }
+  objHttp.open("POST", url, true);
+  objHttp.onreadystatechange = function() {
+    if (objHttp.readyState==4 && objHttp.status==200) {
+      document.getElementById('ci-result').innerHTML = objHttp.responseText;
+      setTimeout('cargarContenido("micita.php");',3000);
+    }
+  }
+  objHttp.send(datacita);
 }
 
 // Funcion para cerrar sesion de usuario
