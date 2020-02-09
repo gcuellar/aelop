@@ -38,20 +38,24 @@
           <li><a id="presupuesto" onclick="cargarContenido('budget.html');activarItem('presupuesto');">Solicita presupuesto</a></li>
           <li><a id="donde" onclick="cargarContenido('donde.html');activarItem('donde');">Dónde estamos</a></li>
           <li><a id="contacto" onclick="cargarContenido('contact.php');activarItem('contacto');">Contacto</a></li>
-          <?php if ($_SESSION) if ($_SESSION['usuario'] == ''){ ?>
+          <?php if (!$_SESSION) { ?>
             <li><a id="login-usrs" onclick="cargarContenido('controlUsuarios.php');activarItem('login-usrs');"><i class="fa fa-user"> </i> Login</a></li>
           <?php } else { ?>
-            <?php if ($_SESSION['usuario'] == '1'){ ?>
-              <li><a id="citas" onclick="cargarContenido('miCita.php');activarItem('citas');">Cita</a></li>
-              <li><a id="admin-usrs" onclick="cargarContenido('gestionDatosPersonales.php');activarItem('admin-usrs');"><i class="fa fa-user"> </i> Mi cuenta</a></li>
-            <?php }
-            else if ($_SESSION['usuario'] == 'admin') {?>
-              <li><a id="admin-prycts" onclick="cargarContenido('aproyectos.php');activarItem('admin-prycts');"><i class="fa fa-pencil"></i> Proyectos</a></li>
-              <li><a id="citas" onclick="cargarContenido('aCitas.php');activarItem('citas');">Ver Citas</a></li>
-              <li><a id="admin-usrs" onclick="cargarContenido('aUsuarios.php');activarItem('admin-usrs');"><i class="fa fa-users"> </i> Usuarios</a></li>
+            <?php if ($_SESSION) if ($_SESSION['usuario'] == ''){ ?>
+              <li><a id="login-usrs" onclick="cargarContenido('controlUsuarios.php');activarItem('login-usrs');"><i class="fa fa-user"> </i> Login</a></li>
+            <?php } else { ?>
+              <?php if ($_SESSION['usuario'] == '1'){ ?>
+                <li><a id="citas" onclick="cargarContenido('miCita.php');activarItem('citas');">Cita</a></li>
+                <li><a id="admin-usrs" onclick="cargarContenido('gestionDatosPersonales.php');activarItem('admin-usrs');"><i class="fa fa-user"> </i> Mi cuenta</a></li>
+              <?php }
+              else if ($_SESSION['usuario'] == 'admin') {?>
+                <li><a id="admin-prycts" onclick="cargarContenido('aproyectos.php');activarItem('admin-prycts');"><i class="fa fa-pencil"></i> Proyectos</a></li>
+                <li><a id="citas" onclick="cargarContenido('aCitas.php');activarItem('citas');">Ver Citas</a></li>
+                <li><a id="admin-usrs" onclick="cargarContenido('aUsuarios.php');activarItem('admin-usrs');"><i class="fa fa-users"> </i> Usuarios</a></li>
+              <?php }?>
+              <li><a onclick="cerrarSesion(); activarItem('inicio');"><i class="fa fa-power-off"></i></a></li>
             <?php }?>
-            <li><a onclick="cerrarSesion(); activarItem('inicio');"><i class="fa fa-power-off"></i></a></li>
-          <?php }?>
+          <?php } ?>
         </ul>
       </nav>
       <!-- #nav-menu-container -->

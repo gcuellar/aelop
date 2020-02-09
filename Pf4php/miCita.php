@@ -6,8 +6,7 @@
   <div id="cita">
     <div class="centrar-form">
       <?php $idusuario = $_SESSION['idusuario'];
-      // $fechaActual = date('c', time());
-      $fechaActual = date('yy-m-d H:m', time());
+      $fechaActual = date('yy-m-d H:i', time());
       $fechaActual =  str_replace(" ", "T",$fechaActual);
       if ($conn) { //Si hay conexión con la bbdd
         // COMPRUEBA SI EXISTE EL CLIENTE

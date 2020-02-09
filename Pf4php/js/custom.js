@@ -285,27 +285,34 @@ function guardarProyecto(){
   // var url = "guadarDatosProyecto.php?idproyecto="+idproyecto+"&nombre="+nombre+"&imagen="+nombreimagen+"&altimg="+altimg+"&datos="+datos+"&tecnologia="+tecnologia+"&tiempo="+tiempo;
   var url = "guadarDatosProyecto.php";
 
-  datap.append('idproyecto', idproyecto);
-  datap.append('nombre', nombre);
-  datap.append('imagen', nombreimagen);
-  datap.append('altimg', altimg);
-  datap.append('datos', datos);
-  datap.append('tecnologia', tecnologia);
-  datap.append('tiempo', tiempo);
-
-  var objHttp=null;
-  if(window.XMLHttpRequest) { objHttp = new XMLHttpRequest(); }
-  else if(window.ActiveXObject) { objHttp = new ActiveXObject("Microsoft.XMLHTTP"); }
-  objHttp.open("POST", url, true);
-  // objHttp.setRequestHeader("X-File-Name", encodeURIComponent(nombreimagen));
-  // objHttp.setRequestHeader("Content-Type", "multipart/form-data");
-  objHttp.onreadystatechange = function() {
-    if (objHttp.readyState==4 && objHttp.status==200) {
-      document.getElementById('result').innerHTML = objHttp.responseText;
-      setTimeout('cargarContenido("aproyectos.php");$(window).scrollTop(300);',3500);
-    }
+  if(!nombre) {
+    document.getElementById('result').innerHTML = 'El proyecto debe tener al menos un nombre';
+    // limpiarFormularioUsuario();
   }
-  objHttp.send(datap);
+  else {
+    datap.append('idproyecto', idproyecto);
+    datap.append('nombre', nombre);
+    datap.append('imagen', nombreimagen);
+    datap.append('altimg', altimg);
+    datap.append('datos', datos);
+    datap.append('tecnologia', tecnologia);
+    datap.append('tiempo', tiempo);
+
+    var objHttp=null;
+    if(window.XMLHttpRequest) { objHttp = new XMLHttpRequest(); }
+    else if(window.ActiveXObject) { objHttp = new ActiveXObject("Microsoft.XMLHTTP"); }
+    objHttp.open("POST", url, true);
+    // objHttp.setRequestHeader("X-File-Name", encodeURIComponent(nombreimagen));
+    // objHttp.setRequestHeader("Content-Type", "multipart/form-data");
+    objHttp.onreadystatechange = function() {
+      if (objHttp.readyState==4 && objHttp.status==200) {
+        alert(objHttp.responseText);
+        cargarContenido("aproyectos.php");
+        $(window).scrollTop(300);
+      }
+    }
+    objHttp.send(datap);
+  }
 }
 
 // Función para procesar el registro de usuarios
@@ -313,10 +320,15 @@ function procesarRegistro() {
   var email = /^(.+\@.+\..+)$/;
   if(!email.test(document.getElementById('u-username').value)) {
     document.getElementById('u-result').innerHTML = 'El usuario debe ser un email con formato válido';
-    limpiarFormularioUsuario();
+    // limpiarFormularioUsuario();
   }
   else { // si el nombre de usuario es un email váilido se agrega a la bbdd
-    nuevoUsuario();
+    if (!document.getElementById('u-pass').value) {
+      document.getElementById('u-result').innerHTML = 'Debe introducir una contraseña';
+    }
+    else {
+      nuevoUsuario();
+    }
   }
 }
 
@@ -337,7 +349,7 @@ function nuevoUsuario(){
   objHttp.onreadystatechange = function() {
     if (objHttp.readyState==4 && objHttp.status==200) {
       document.getElementById('u-result').innerHTML = objHttp.responseText;
-      limpiarFormularioUsuario();
+      // limpiarFormularioUsuario();
     }
   }
   objHttp.send(datau);
@@ -370,7 +382,7 @@ function accesoUsuario(){
     }
     else if (objHttp.status==401) {
       document.getElementById('u-result').innerHTML = objHttp.responseText;
-      setTimeout('limpiarFormularioUsuario()',2500);
+      // setTimeout('limpiarFormularioUsuario()',2500);
     }
   }
   objHttp.send(datau);
@@ -385,22 +397,29 @@ function editarDatosPersonales(){
   var telefono = document.getElementById('dp-telefono').value;
   var url = "guadarDatosPersonales.php";
 
-  datac.append('idcliente', idcliente);
-  datac.append('nombre', nombre);
-  datac.append('apellidos', apellidos);
-  datac.append('telefono', telefono);
-
-  var objHttp=null;
-  if(window.XMLHttpRequest) { objHttp = new XMLHttpRequest(); }
-  else if(window.ActiveXObject) { objHttp = new ActiveXObject("Microsoft.XMLHTTP"); }
-  objHttp.open("POST", url, true);
-  objHttp.onreadystatechange = function() {
-    if (objHttp.readyState==4 && objHttp.status==200) {
-      document.getElementById('dp-result').innerHTML = objHttp.responseText;
-      setTimeout('cargarContenido("gestionDatosPersonales.php");$(window).scrollTop(300);',3500);
-    }
+  if(telefono.length>12) {
+    document.getElementById('dp-result').innerHTML = 'El número de telefono es demasiado largo';
   }
-  objHttp.send(datac);
+  else {
+    datac.append('idcliente', idcliente);
+    datac.append('nombre', nombre);
+    datac.append('apellidos', apellidos);
+    datac.append('telefono', telefono);
+
+    var objHttp=null;
+    if(window.XMLHttpRequest) { objHttp = new XMLHttpRequest(); }
+    else if(window.ActiveXObject) { objHttp = new ActiveXObject("Microsoft.XMLHTTP"); }
+    objHttp.open("POST", url, true);
+    objHttp.onreadystatechange = function() {
+      if (objHttp.readyState==4 && objHttp.status==200) {
+        // document.getElementById('dp-result').innerHTML = objHttp.responseText;
+        alert(objHttp.responseText);
+        cargarContenido("gestionDatosPersonales.php");
+        $(window).scrollTop(300);
+      }
+    }
+    objHttp.send(datac);
+  }
 }
 
 // Funcion del administrador para modificar datos de clientes de la bbdd
@@ -425,8 +444,10 @@ function editarDatosClientes(){
   objHttp.open("POST", url, true);
   objHttp.onreadystatechange = function() {
     if (objHttp.readyState==4 && objHttp.status==200) {
-      document.getElementById('cli-result').innerHTML = objHttp.responseText;
-      setTimeout('cargarContenido("ausuarios.php");$(window).scrollTop(300);',3500);
+      // document.getElementById('cli-result').innerHTML = objHttp.responseText;
+      alert(objHttp.responseText);
+      cargarContenido("ausuarios.php");
+      $(window).scrollTop(300);
     }
   }
   objHttp.send(datacli);
@@ -481,8 +502,10 @@ function nuevoClienteCita(){
     objHttp.open("POST", url, true);
     objHttp.onreadystatechange = function() {
       if (objHttp.readyState==4 && objHttp.status==200) {
-        document.getElementById('ci-result').innerHTML = objHttp.responseText;
-        setTimeout('cargarContenido("micita.php");',3000);
+        // document.getElementById('ci-result').innerHTML = objHttp.responseText;
+        alert(objHttp.responseText);
+        // setTimeout('cargarContenido("micita.php");',3000);
+        cargarContenido("micita.php");
       }
     }
     objHttp.send(datacita);
@@ -513,8 +536,10 @@ function nuevaCita(){
     objHttp.open("POST", url, true);
     objHttp.onreadystatechange = function() {
       if (objHttp.readyState==4 && objHttp.status==200) {
-        document.getElementById('ci-result').innerHTML = objHttp.responseText;
-        setTimeout('cargarContenido("micita.php");',3000);
+        // document.getElementById('ci-result').innerHTML = objHttp.responseText;
+        // setTimeout('cargarContenido("micita.php");',3000);
+        alert(objHttp.responseText);
+        cargarContenido("micita.php");
       }
     }
     objHttp.send(datacita);
@@ -564,8 +589,10 @@ function editarCita(){
   objHttp.open("POST", url, true);
   objHttp.onreadystatechange = function() {
     if (objHttp.readyState==4 && objHttp.status==200) {
-      document.getElementById('ci-result').innerHTML = objHttp.responseText;
-      setTimeout('cargarContenido("micita.php");',3000);
+      // document.getElementById('ci-result').innerHTML = objHttp.responseText;
+      // setTimeout('cargarContenido("micita.php");',3000);
+      alert(objHttp.responseText);
+      cargarContenido("micita.php");
     }
   }
   objHttp.send(datacita);

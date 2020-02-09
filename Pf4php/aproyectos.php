@@ -52,8 +52,8 @@
           <input id="p-datos" type="textarea" name="datos" value=""></label>
           <label for="tecnologia">Tecnología
           <input id="p-tecnologia" type="text" name="tecnologia" value=""></label>
-          <label for="tiempo">Tiempo
-          <input id="p-tiempo" type="text" name="tiempo" value=""></label>
+          <label for="tiempo">Tiempo (horas)
+          <input id="p-tiempo" type="number" name="tiempo" value=""></label>
           <button type="button" onclick="guardarProyecto();" name="guardar">Guardar</button>
           <div id="result" class="res"> </div>
         </form>

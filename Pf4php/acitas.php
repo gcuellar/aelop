@@ -20,8 +20,10 @@
             $telefono = $row['telefono'];
             $email = $row['user'];
 
+            $fechaFormateada = date('d-m-Y \a \l\a\s H:i', strtotime($fecha));
+
             $cadena .= '<tr>';
-              $cadena .= '<td><div class="fecha-cita">'.$fecha.'</div></td>';
+              $cadena .= '<td><div class="fecha-cita">'.$fechaFormateada.'</div></td>';
               $cadena .= '<td><div class="nombre">'.$nombre.' '.$apellidos.'</div></td>';
               $cadena .= '<td><div class="telefono">'.$telefono.'</div></td>';
               $cadena .= '<td><div class="email">'.$email.'</div></td>';
