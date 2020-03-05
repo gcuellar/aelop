@@ -45,7 +45,11 @@ class pelicula {
         $fechaActual = date("d-m-Y");
         if ($this->alquilada == 'true') {
             if ($fechaActual > $this->fecha_devolucion) {
+<<<<<<< HEAD
               $retraso = (integer)$fechaActual - (integer)$this->fecha_devolucion; 
+=======
+              $retraso = ($fechaActual - $this->fecha_devolucion); 
+>>>>>>> 1c8e400456f1b110017342ded745187c5ad0e501
               $recargo = $retraso * 1.2;
             }
         }
