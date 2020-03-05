@@ -1,0 +1,32 @@
+Debemos de instalar un servidor desde cero, una vez que lo tengamos instalado
+debemos hacer lo siguiente:
+ Instalar ssh. (captura 01)
+ Instalar apache2. (captura 03)
+Crearemos una carpeta en /home/webs. (Captura 04)
+En esta carpeta iremos añadiendo los
+diferentes virtual host:
+ Virtual host llamado www.miweb.com , crearemos una web solo con un fichero index para hacer las pruebas:
+(1) Crearemos un directorio dentro de webs que se llamara miweb. (Captura 05)
+(2) Añadiremos un fichero index.html. (Captura 05)
+(3) Creamos el host virtual, que será accesible como www.miweb.com
+y miweb.com. (Captura 06)
+(4) Permitimos seguir enlaces simbólicos. Permite MultiViews, Directorio formateado. (Captura 06)
+(5) Página de inicio index.html. (Captura 07 y 08 'Tras modificar el fichero hosts')
+ Virtual host llamado www.accesobasico.com.
+(6) Igual que el anterior pero creamos dentro de este host una carpeta privada que será donde solo podrán acceder algunos usuarios, (Captura 09)
+crear usuarios para hacer las pruebas. (Captura 10 y 11)
+Creada la carpeta /privado
+Dos usuarios creados:
+Usuario		contraseña
+aelop		userprivado
+usuario2	segundoprivlado
+
+ Creamos un host virtual con certificado ssl. (Capturas 12 en adelante)
+(7) www.missl.com.
+ Crearemos una carpeta privada que la configuraremos como en el host anterior.(como el host de accesobasico)
+Creada la carpeta /privado configurada con los usuarios del host anterior (ambos tiran del mismo fichero)
+Genero un certificado (contraseña: 1certificadopas2345) (Captura 13)
+La clave generada tuvo que ser finalmente de 2048 bits
+Lo incluyo en el host (Captura 14)
+Para que funcionase la redirección había que habilitar el módulo alias (Captura 15)
+Adjunto el fichero hosts, la carpeta home y la de apache y las capturas realizadas durante el proceso
